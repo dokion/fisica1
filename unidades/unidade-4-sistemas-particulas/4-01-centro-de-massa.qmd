@@ -1,0 +1,88 @@
+---
+title: "4.1 — Centro de massa em sistemas de partículas e corpos rígidos"
+categories: [UE4, OE4.1-B3]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 4.1 [B3] Conceituar a grandeza centro de massa e calculá-la em situações
+            relevantes
+            → naval: GG₁ = m·d/Δ: deslocamento do G do navio ao adicionar, remover
+              ou mover massas a bordo
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 45-46 >}}
+
+Um navio tem milhões de quilogramas distribuídos entre casco, máquinas, carga, lastro e
+combustível — e no entanto toda a estabilidade se calcula acompanhando **um único
+ponto**: o G. O centro de massa é a maior compressão de informação da mecânica, e a
+fórmula com que o oficial o desloca ao carregar tem três letras: GG₁.
+
+## Definição e cálculo {{< ra OE4.1 B3 >}}
+
+Para um sistema de $N$ partículas, o **centro de massa** é a média das posições
+ponderada pelas massas:
+
+$$\vec{r}_{\text{CM}} = \frac{\sum_i m_i\,\vec{r}_i}{\sum_i m_i} = \frac{\sum_i m_i\,\vec{r}_i}{M}$$
+
+Para um corpo contínuo, a soma vira integral: $\vec r_{\text{CM}} = \frac{1}{M}\int \vec r\,dm$.
+Propriedades que aceleram qualquer conta:
+
+- Corpo homogêneo com simetria → CM no elemento de simetria (esfera: centro; barra
+  uniforme: meio);
+- **Composição:** o CM de um conjunto de corpos é o CM dos CMs individuais, cada um
+  com sua massa total — é assim que se combina navio leve + carga + lastro;
+- O CM pode cair **fora da matéria** (num casco em L, num anel).
+
+No vocabulário naval, o centro de massa é o **centro de gravidade G**, e sua altura
+sobre a quilha é o **KG** — a coordenada vertical do $\vec r_{\text{CM}}$ com a quilha
+como referência.
+
+## A fórmula operacional: GG₁
+
+{{< aula 47-48 >}}
+
+O que acontece com G quando se **move** uma massa $m$ já a bordo por uma distância $d$?
+Da definição, com o deslocamento $\Delta\vec r_m = \vec d$ da massa movida:
+
+$$\Delta\vec{r}_{\text{CM}} = \frac{m\,\vec{d}}{M}
+\qquad \Longrightarrow \qquad
+\boxed{GG_1 = \frac{m \times d}{\Delta}}$$
+
+($\Delta$ = deslocamento total do navio, na linguagem de bordo). E as regras
+qualitativas que o Model Course enuncia (7.04 §4.2.1.8) saem da mesma álgebra:
+
+- massa **adicionada** → G move-se **em direção** a ela: $GG_1 = m\,d/(\Delta + m)$,
+  com $d$ a distância da massa ao G original;
+- massa **removida** → G **afasta-se** dela: $GG_1 = m\,d/(\Delta - m)$;
+- massa **movida** → G move-se **paralelamente** ao trajeto da massa.
+
+Um caso traiçoeiro e clássico: **carga suspensa**. No instante em que o guindaste de
+bordo suspende um peso do porão, a massa passa a "agir" no **ponto de suspensão** (topo
+da lança — tópico 1.4): para efeito de G, é como se ela tivesse subido instantaneamente
+até lá, elevando o KG antes de qualquer movimento visível.
+
+<!-- SIMULAÇÃO SUGERIDA: Plotly (tabela Q4, SP2): seção transversal do navio com
+     massas móveis (arrastar peso de porão a convés, adicionar/remover lastro) e o
+     ponto G recalculado ao vivo por GG₁ = m·d/Δ; trilha do G. Parâmetros:
+     Δ 10–60 mil t, pesos 10–500 t (faixa SP2). Paridade matplotlib no {python}:
+     antes/depois com vetor GG₁. -->
+
+::: {.sp}
+Um navio desloca 28 000 t com KG = 8,20 m. Movem-se 350 t de carga do porão
+(Kg = 4,0 m) para o convés (Kg = 14,0 m).
+
+**(a) Modelagem:** massa movida verticalmente por $d = 14{,}0 - 4{,}0 = 10{,}0$ m;
+$GG_1 = m\,d/\Delta$, vertical, para cima.
+
+**(b) Desenvolvimento:**
+$$GG_1 = \frac{350 \times 10{,}0}{28\,000} = 0{,}125\,\text{m}
+\qquad KG_1 = 8{,}20 + 0{,}125 = 8{,}33\,\text{m}$$
+
+**(c) Resultado:** G sobe 12,5 cm — o KG passa a 8,33 m.
+
+**(d) Análise crítica:** 12,5 cm parecem inofensivos, mas num navio com GM de 0,60 m
+isso consome **um quinto** da margem de estabilidade (o GM cai o mesmo que o KG sobe,
+para M fixo). A mesma conta com o peso *suspenso* pelo guindaste de bordo
+(ponto de suspensão a Kg = 22 m) daria KG₁ = 8,43 m **durante a faina** — o momento
+mais crítico é com a carga no ar, não depois de estivada.
+:::

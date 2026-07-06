@@ -1,0 +1,91 @@
+---
+title: "4.2 — Segunda lei de Newton e o movimento do centro de massa"
+categories: [UE4, OE4.2-B3]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 4.2 [B3] Aplicar a segunda lei de Newton ao movimento do centro de massa de
+            sistemas de partículas e corpos rígidos
+            → naval: Navio como sistema: resposta do CG à resultante (rebocadores,
+              aceleração, parada)
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 49-50 >}}
+
+Com que direito tratamos um navio — milhares de peças, tanques com líquido, tripulação
+andando — como "uma partícula" nos tópicos de cinemática? O teorema deste tópico é o
+que dá o direito: o centro de massa de **qualquer** sistema se move como se fosse uma
+partícula com toda a massa, empurrada apenas pelas forças externas.
+
+## O teorema do centro de massa {{< ra OE4.2 B3 >}}
+
+Derivando duas vezes a definição de $\vec r_{\text{CM}}$ e aplicando a 2ª lei a cada
+partícula:
+
+$$M\,\vec{a}_{\text{CM}} = \sum_i \vec{F}_i
+= \sum \vec{F}_{\text{ext}} + \underbrace{\sum \vec{F}_{\text{int}}}_{=\,0\ \text{(3ª lei)}}$$
+
+As forças **internas** cancelam-se aos pares — ação e reação dentro do próprio sistema:
+
+$$\boxed{\sum \vec{F}_{\text{ext}} = M\,\vec{a}_{\text{CM}}}$$
+
+Duas leituras, ambas operacionais:
+
+**1. Nada interno desloca o CM.** A tripulação pode correr de bordo a bordo, o líquido
+pode ressoar nos tanques, o guindaste do navio pode mover a própria carga: sem força
+**externa**, o centro de massa do sistema completo não sai do lugar (o *casco* se move
+em reação — como um bote de onde se caminha para a proa — mas o CM do conjunto, não).
+É por isso que o tópico 4.1 calculava GG₁ *do navio*: mover carga muda o G **relativo
+ao casco**, e não impulsiona o navio na água.
+
+**2. Só o balanço externo governa a manobra.** Para o navio como sistema, as externas
+são: empuxo do hélice, força do leme, vento, corrente, rebocadores, espias. A
+trajetória do G responde à **soma vetorial** delas — a base de todo diagrama de forças
+de manobra:
+
+$$\vec{T}_{\text{hélice}} + \vec{F}_{\text{leme}} + \vec{F}_{\text{reboc}} + \vec{F}_{\text{vento}} + \dots = M\,\vec{a}_{G}$$
+
+Com dois rebocadores empurrando em pontos diferentes do casco, a **translação** do G
+depende só da soma das forças; a diferença de pontos de aplicação produz **rotação** —
+o par translação + rotação que a UE5 completa. Empurrar no través a meia-nau translada;
+empurrar na alheta principalmente gira.
+
+::: {.callout-warning}
+**Erro clássico:** "o vento empurrou a carga do convés, logo empurrou o navio" — força
+sobre a carga peada é **interna** ao sistema navio+carga só se vier de dentro; o vento
+é externo e conta. O critério não é onde a força toca, é **de onde ela vem**: cruzou a
+fronteira do sistema, é externa. Definir a fronteira antes de somar é metade da
+questão.
+:::
+
+<!-- SIMULAÇÃO SUGERIDA: p5.js (tabela Q4 — movimento, SP8): vista superior de navio
+     com dois rebocadores posicionáveis (ponto de aplicação e direção ajustáveis);
+     mostrar Σ F_ext, a trajetória do G e a rotação do casco separadamente — evidencia
+     translação × rotação. Parâmetros: empuxos de rebocador 200–600 kN,
+     Δ 20–60 mil t. Paridade matplotlib no {python}: diagrama vetorial de um caso. -->
+
+::: {.sp}
+Dois rebocadores atracam um navio de 32 000 t: um empurra no través a meia-nau com
+400 kN, outro na alheta com 300 kN, ambos perpendiculares ao plano diametral, mesmo
+bordo. Águas paradas, sem vento; despreze a resistência lateral da água nos primeiros
+instantes.
+
+**(a) Modelagem:** teorema do CM — a aceleração lateral do G responde à soma das
+externas, independentemente dos pontos de aplicação.
+
+**(b) Desenvolvimento:**
+$$a_G = \frac{\sum F}{M} = \frac{(400 + 300){\times}10^3}{32{\times}10^6}
+= 0{,}0219\,\text{m/s}^2$$
+
+Em 60 s de empurra: $v_G = a_G t = 1{,}31\,\text{m/s}$ (≈ 2,6 nós de caimento) e
+$\Delta y = \tfrac{1}{2}a_G t^2 \approx 39\,\text{m}$.
+
+**(c) Resultado:** o G ganha ~2,6 nós de deslocamento lateral em um minuto — mais do
+que o seguro para o costado tocar o cais.
+
+**(d) Análise crítica:** na prática os rebocadores modulam para muito menos, e a água
+resiste crescentemente com $v$ — o modelo vale para o transiente inicial. Note o que o
+teorema separa: os 700 kN somados dão a **translação** do G; o fato de 300 kN estarem
+na alheta (braço em relação ao G) produz **giro** simultâneo do casco — que a UE5
+quantifica com momento de inércia e torque.
+:::

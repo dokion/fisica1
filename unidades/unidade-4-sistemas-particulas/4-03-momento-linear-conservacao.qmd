@@ -1,0 +1,95 @@
+---
+title: "4.3 — Momento linear e sua conservação"
+categories: [UE4, OE4.3-B3]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 4.3 [B3] Definir o momento linear e aplicar sua conservação à sistemas de
+            partículas e corpos rígidos em situações relevantes
+            → naval: Princípio da propulsão a hélice: quantidade de movimento
+              imprimida à água (empuxo); recuo
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 53-54 >}}
+
+Como um navio de 50 000 t se empurra através da água? Não há nada rígido para apoiar —
+o hélice "se apoia" na própria água, arremessando-a para ré. A grandeza que torna essa
+frase uma equação é o momento linear, e sua lei de conservação é das mais robustas da
+física: vale mesmo quando as forças da colisão ou do escoamento são complicadas demais
+para conhecer.
+
+## Momento linear e impulso {{< ra OE4.3 B3 >}}
+
+O **momento linear** (quantidade de movimento) de uma partícula é
+
+$$\vec{p} = m\vec{v} \qquad [\text{kg·m/s}]$$
+
+e o de um sistema é a soma — que, pela definição de centro de massa, vale
+$\vec P = M\vec v_{\text{CM}}$. A 2ª lei na forma original de Newton:
+
+$$\sum \vec{F}_{\text{ext}} = \frac{d\vec{P}}{dt}$$
+
+Integrando no tempo, obtém-se o **teorema do impulso**:
+
+$$\vec{J} = \int_{t_1}^{t_2} \sum\vec{F}_{\text{ext}}\,dt = \Delta \vec{P}$$
+
+— útil quando a força é breve e desconhecida em detalhe (o "tranco" da espia, o toque
+no cais): mede-se pelo efeito, não pela causa.
+
+## Conservação e o recuo
+
+Se $\sum \vec F_{\text{ext}} = 0$ (ou é desprezível durante o evento),
+
+$$\boxed{\vec{P}_1 = \vec{P}_2}$$
+
+O caso arquetípico é o **recuo**: sistema parte do repouso ($\vec P = 0$), uma parte é
+lançada para um lado, o resto recua para o outro com momento igual e oposto. Lanchar um
+peso pesado pela popa, disparar a bigota de um lança-retinidas, o coice de um cabo que
+parte — tudo é $m_1\vec v_1 = -m_2\vec v_2$.
+
+**A propulsão é recuo contínuo.** O hélice acelera continuamente uma coluna de água
+para ré; a taxa de momento imprimida à água é a força sobre a água, e a reação (3ª lei)
+é o **empuxo** sobre o navio:
+
+$$T = \frac{dp_{\text{água}}}{dt} = \dot{m}\,(v_{\text{jato}} - v_0)$$
+
+onde $\dot m$ é a vazão mássica pelo disco do hélice e $(v_{\text{jato}} - v_0)$ o
+acréscimo de velocidade dado à água. É o "principle of screw propulsion" do 7.03
+§3.2.2.6 em uma linha: **empurrar água para trás é a única forma de ir para a frente**
+— e o *slip* do hélice (a água precisa sair mais rápida que o navio avança) não é
+defeito, é a própria condição de existência do empuxo.
+
+**Colisões** usam a mesma lei: num abalroamento, as forças do impacto são internas ao
+par de navios — o momento total do conjunto imediatamente antes e depois é o mesmo,
+o que permite reconstruir velocidades de aproximação a partir do movimento conjunto
+pós-impacto (colisão perfeitamente inelástica: os cascos seguem juntos).
+
+<!-- SIMULAÇÃO SUGERIDA: Matter.js (tabela Q4 — colisão/interação, SP8): dois modos:
+     (i) colisão inelástica entre dois "navios" com massas e velocidades ajustáveis,
+     conferindo P antes = P depois; (ii) recuo: bloco lançado da popa de uma balsa
+     livre. Parâmetros: massas 5–60 mil t, velocidades 2–14 nós (faixa SP8).
+     Paridade matplotlib no {python}: gráfico de barras dos momentos antes/depois. -->
+
+::: {.sp}
+Um navio de 24 000 t a 6 nós abalroa pela popa um navio de 36 000 t que seguia a
+2 nós no mesmo rumo. Os cascos permanecem engajados (colisão perfeitamente
+inelástica).
+
+**(a) Modelagem:** forças do impacto são internas ao sistema dos dois navios; a
+resistência da água é desprezível na escala de segundos do impacto →
+$P_1 = P_2$. Velocidades: $6$ nós $= 3{,}09$ m/s; $2$ nós $= 1{,}03$ m/s.
+
+**(b) Desenvolvimento:**
+$$v_f = \frac{m_1v_1 + m_2v_2}{m_1 + m_2}
+= \frac{24\,000 \times 3{,}09 + 36\,000 \times 1{,}03}{60\,000}
+= 1{,}85\,\text{m/s} \;(\approx 3{,}6\,\text{nós})$$
+
+**(c) Resultado:** o conjunto segue a ~3,6 nós — e a energia cinética caiu de
+151 MJ para 103 MJ: **48 MJ** foram para deformar chapa e aquecer aço.
+
+**(d) Análise crítica:** o momento se conservou; a energia mecânica, não — colisão
+inelástica é o par de leis funcionando junto (4.3 + 3.6). A perícia naval percorre o
+caminho inverso: do $v_f$ (registrado pelo VDR) e das massas, reconstrói as
+velocidades de aproximação. Distrator clássico: somar os módulos das velocidades sem
+sinal — aqui os rumos coincidem, mas num impacto frontal $v_2$ entra **negativa**.
+:::
