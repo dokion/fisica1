@@ -1,0 +1,91 @@
+---
+title: "3.6 — Energia mecânica em sistemas dissipativos"
+categories: [UE3, OE3.6-B4]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 3.6 [B4] Analisar e calcular a variação de energia mecânica em sistemas
+            dissipativos
+            → naval: Perdas por atrito em mancais da linha de eixo; aquecimento de
+              mancal como sintoma
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 43-44 >}}
+
+Todo sistema real de bordo é dissipativo: mancais aquecem, defensas se deformam, a
+esteira ferve atrás do hélice. O tópico anterior mostrou que a energia total se
+conserva; este ensina a **quantificar quanto da energia mecânica se degrada** — e a
+ler o calor gerado como o sintoma de manutenção que ele é.
+
+## O balanço com dissipação {{< ra OE3.6 B4 >}}
+
+Do tópico 3.5, com forças não conservativas trabalhando:
+
+$$\Delta(K + U) = W_{\text{nc}}$$
+
+Para o atrito, $W_{\text{nc}} = -f\,d$ (sempre negativo, proporcional ao **caminho
+percorrido**): a energia mecânica só faz cair, e a queda vira energia térmica:
+
+$$E_{\text{dissipada}} = |W_{\text{nc}}| = E_1 - E_2$$
+
+O método de análise em três passos: (1) energia mecânica no estado inicial; (2) no
+final; (3) a diferença é o que virou calor — e **onde** ela virou calor é a pergunta
+de engenharia.
+
+**Exemplo resolvido — carga que desliza no convés adernado:** um volume de carga mal
+peado ($m = 2$ t) desliza 6 m por um convés inclinado 15°, com $\mu_k = 0{,}25$,
+partindo do repouso.
+
+$$E_1 - E_2 = |W_{\text{atrito}}|:\quad
+mgd\sin\theta - \tfrac{1}{2}mv^2 = \mu_k\,mg\cos\theta\,d$$
+
+$$v = \sqrt{2gd(\sin\theta - \mu_k\cos\theta)}
+= \sqrt{2 \times 9{,}81 \times 6 \times (0{,}259 - 0{,}242)} = 1{,}4\,\text{m/s}$$
+
+Dos $mgd\sin\theta = 30{,}5$ kJ liberados pelo desnível, o atrito consumiu
+$28{,}5$ kJ (93%!) — e ainda assim a carga chega com 1,4 m/s: 2 t a 1,4 m/s são 2 kJ
+de impacto no anteparo.
+
+## Dissipação contínua: potência perdida em mancais
+
+Em regime permanente (velocidade constante), $\Delta K = 0$ — toda a potência
+dissipada vira **fluxo de calor**. Num mancal da linha de eixo, a força de atrito nos
+munhões consome
+
+$$P_{\text{diss}} = f\,v = \mu\,N\,v$$
+
+onde $v$ é a velocidade periférica do eixo no mancal. Esse calor tem que ser removido
+pelo óleo de lubrificação; se $\mu$ sobe (óleo degradado, contaminação, desalinhamento),
+$P_{\text{diss}}$ sobe junto e a **temperatura do mancal é o primeiro instrumento a
+denunciar** — por isso ela está no topo da ronda da praça de máquinas. A análise
+energética transforma um número de termômetro em diagnóstico mecânico.
+
+<!-- SIMULAÇÃO SUGERIDA: Plotly (tabela Q4): balanço de energia da carga no convés
+     inclinado — barras K, U e E_dissipada evoluindo com a distância percorrida,
+     sliders de θ e μk (mostra o caso-limite tanθ = μk em que a carga não desliza,
+     ligação com o tópico 2.3). Parâmetros: m = 2 t, d até 10 m, θ 0–25°,
+     μk 0,1–0,5. Paridade matplotlib no {python}. -->
+
+::: {.sp}
+Um mancal de escora suporta $N = 80$ kN de carga radial num eixo de 500 mm de diâmetro
+a 84 rpm. Lubrificado, $\mu = 0{,}005$; com o óleo degradado, $\mu = 0{,}02$.
+
+**(a) Modelagem:** regime permanente → potência dissipada $P = \mu N v$, com
+$v = \pi D n = \pi \times 0{,}500 \times 1{,}40 = 2{,}20\,\text{m/s}$ (velocidade
+periférica).
+
+**(b) Desenvolvimento:**
+$$P_{\text{bom}} = 0{,}005 \times 80{\times}10^3 \times 2{,}20 = 880\,\text{W}
+\qquad
+P_{\text{ruim}} = 0{,}02 \times 80{\times}10^3 \times 2{,}20 = 3{,}5\,\text{kW}$$
+
+**(c) Resultado:** a degradação do óleo quadruplica o calor gerado — de ~0,9 kW para
+~3,5 kW **contínuos** dentro de uma peça de aço.
+
+**(d) Análise crítica:** 3,5 kW é um aquecedor doméstico ligado dentro do mancal: se
+o resfriamento pelo óleo não acompanhar, a temperatura sobe até a falha (o metal
+patente funde a ~240 °C). A cadeia causal — μ↑ → P_diss↑ → T↑ — é o que faz da
+temperatura de mancal um alarme de física, não de eletrônica. Em escala de navio, é
+o mesmo raciocínio da resistência ao avanço: os MW "perdidos" do tópico 3.5 estão
+aquecendo a esteira.
+:::

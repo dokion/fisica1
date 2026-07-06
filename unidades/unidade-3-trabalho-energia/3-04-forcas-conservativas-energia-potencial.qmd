@@ -1,0 +1,89 @@
+---
+title: "3.4 — Forças conservativas e energia potencial"
+categories: [UE3, OE3.4-B3]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 3.4 [B3] Estabelecer e aplicar os conceitos de forças conservativas e de Energia
+            potencial
+            → naval: Trabalho contra o peso no içamento de carga armazenado como
+              energia potencial
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 39-40 >}}
+
+Iça-se um contêiner do porão ao convés: trabalhou-se contra o peso. Mas esse trabalho
+não sumiu — está *armazenado* na posição da carga, pronto para voltar integralmente se
+ela descer. Nem toda força permite esse estorno (o atrito não devolve nada), e a
+distinção entre as que devolvem e as que não devolvem organiza toda a energética da
+mecânica.
+
+## Forças conservativas {{< ra OE3.4 B3 >}}
+
+Uma força é **conservativa** quando o trabalho que ela realiza entre dois pontos
+**não depende do caminho** — equivalentemente, quando seu trabalho em qualquer
+percurso fechado é nulo.
+
+**O peso é conservativa.** Num deslocamento qualquer, $W_{\text{peso}} = -mg\,\Delta y$:
+só o desnível importa. Içar pela vertical ou arrastar pela rampa mais longa custa o
+mesmo trabalho contra a gravidade (não o mesmo esforço total — a rampa acrescenta
+atrito, que é outra força).
+
+**O atrito não é.** Seu trabalho é $-f \cdot (\text{comprimento do caminho})$: sempre
+negativo, e maior no caminho mais longo. Ida e volta não devolve nada — dissipa duas
+vezes.
+
+## Energia potencial
+
+Para cada força conservativa define-se a **energia potencial** $U$, o "extrato
+bancário" do trabalho:
+
+$$\Delta U = -W_{\text{cons}}
+\qquad\text{ou, em uma dimensão,}\qquad F = -\frac{dU}{dx}$$
+
+Para o peso, com $y$ medido para cima de uma referência arbitrária:
+
+$$U_g = m\,g\,y$$
+
+Só **diferenças** de $U$ têm significado físico — a referência (quilha, linha d'água,
+convés principal) é escolha de conveniência, exatamente como a referência do KG na
+estabilidade. Para uma mola (ou cabo elástico) de constante $k$ deformada de $x$, a
+mesma definição dá
+
+$$U_{el} = \tfrac{1}{2}k\,x^2$$
+
+— é a energia do alongamento do cabo de amarração do tópico 1.5, a que o *snap-back*
+libera de uma vez.
+
+A utilidade prática: com $U$, o trabalho conservativo já está "pré-integrado". No
+próximo tópico, isso vira o princípio da conservação da energia mecânica —
+contabilidade de $K + U$ sem integrar força nenhuma.
+
+<!-- SIMULAÇÃO SUGERIDA: Plotly (tabela Q4, SP5): dois caminhos do porão ao convés
+     (vertical direto × rampa em zigue-zague) com o trabalho contra o peso calculado
+     igual nos dois e o trabalho do atrito crescendo com o comprimento do caminho;
+     barras U_g e W_atrito lado a lado. Parâmetros: carga 5–30 t, desnível 8–15 m
+     (faixa SP5). Paridade matplotlib no {python}. -->
+
+::: {.sp}
+Um guindaste iça um contêiner de 25 t do fundo do porão (tampa do duplo-fundo) ao
+convés, um desnível de 12 m, e o deposita 30 m adiante na horizontal.
+
+**(a) Modelagem:** peso é conservativa → só o desnível conta;
+$\Delta U = mg\,\Delta y$.
+
+**(b) Desenvolvimento:**
+$$\Delta U = 25{\times}10^3 \times 9{,}81 \times 12 = 2{,}94{\times}10^6\,\text{J} \approx 2{,}9\,\text{MJ}$$
+
+O deslocamento horizontal de 30 m não altera $U_g$ ($\theta = 90°$, o peso não
+trabalha).
+
+**(c) Resultado:** ≈ 2,9 MJ armazenados como energia potencial gravitacional.
+
+**(d) Análise crítica:** esses 2,9 MJ são recuperáveis — e perigosos: se o estropo
+falhar com a carga suspensa, voltam como energia cinética em queda livre
+($v = \sqrt{2g\,\Delta y} \approx 15$ m/s ao tocar o porão). É também a física do
+navio como um todo: içar pesos **eleva o centro de gravidade** (KG) e essa energia
+posicional é exatamente o que a estabilidade transversal administra — a ponte entre
+esta UE e a UE4.
+:::

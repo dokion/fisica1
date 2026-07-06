@@ -1,0 +1,87 @@
+---
+title: "3.1 — Trabalho de uma força"
+categories: [UE3, OE3.1-B3]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 3.1 [B3] Definir e aplicar o conceito de trabalho de uma força
+            → naval: Trabalho do gás sobre o pistão no motor diesel (área do
+              diagrama p–V)
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 33-34 >}}
+
+"Trabalho", em física, não é esforço — é força **produzindo deslocamento**. Um cabo que
+sustenta uma carga parada não trabalha, por mais tensionado que esteja; o gás que
+empurra o pistão do motor diesel ao longo do curso trabalha, e é desse trabalho que o
+navio vive. Este tópico define a grandeza e ensina a calculá-la nos três níveis:
+força constante, força variável e o caso-mestre do diagrama p–V.
+
+## Definição {{< ra OE3.1 B3 >}}
+
+Para força constante $\vec F$ atuando ao longo de um deslocamento $\vec d$:
+
+$$W = \vec{F}\cdot\vec{d} = F\,d\cos\theta \qquad [\text{J} = \text{N·m}]$$
+
+O produto escalar carrega a física: só a componente da força **na direção do
+movimento** trabalha.
+
+- $\theta = 0$: trabalho máximo, $W = Fd$ (reboque alinhado com o rumo);
+- $\theta = 90°$: $W = 0$ — a normal do convés e a centrípeta do giro **nunca**
+  trabalham;
+- $\theta > 90°$: trabalho **negativo** — a força retira energia (atrito, máquinas
+  atrás na parada).
+
+Para força **variável** ao longo de uma trajetória, o deslocamento é fatiado em passos
+pequenos e o trabalho total é a soma:
+
+$$W = \int_{x_1}^{x_2} F(x)\,dx$$
+
+— a **área sob a curva** $F(x)$, exatamente como a distância era a área sob $v(t)$ no
+tópico 2.1.
+
+## O caso-mestre naval: o gás sobre o pistão
+
+No cilindro do motor diesel, o gás a pressão $p$ empurra o pistão de área $A$ com força
+$F = pA$. Num deslocamento $dx$, o trabalho é $dW = pA\,dx = p\,dV$, e ao longo do
+curso:
+
+$$W = \int_{V_1}^{V_2} p\,dV$$
+
+O trabalho do ciclo é a **área do diagrama p–V** (o "diagrama indicador" que os praxes
+de máquinas levantam do MCP). É a mesma matemática da força variável, trocando
+$F(x) \to p(V)$: a pressão cai conforme o gás expande, e a integral captura isso. A
+engenharia resume o ciclo numa **pressão média efetiva** (m.e.p.) — a pressão constante
+fictícia que produziria o mesmo trabalho:
+
+$$W_{\text{ciclo}} = p_{\text{me}} \cdot A \cdot L
+\qquad (L = \text{curso do pistão})$$
+
+fórmula que o tópico 3.3 promove a potência indicada, fechando com a âncora IMO
+(7.04 §1.4.1.1).
+
+<!-- SIMULAÇÃO SUGERIDA: Plotly (tabela Q4 — diagrama p–V é gráfico explorável,
+     SP10): diagrama indicador do diesel com área do ciclo hachurada e valor de W
+     em hover; slider de m.e.p. mostrando o retângulo equivalente sobre o ciclo real.
+     Parâmetros: diâmetro 0,6 m, curso 2,4 m, m.e.p. 15–20 bar (motor lento típico).
+     Paridade matplotlib no {python}. -->
+
+::: {.sp}
+Num cilindro de motor diesel lento, o pistão tem 600 mm de diâmetro e curso de 2,4 m.
+A pressão média efetiva do ciclo é 18 bar.
+
+**(a) Modelagem:** trabalho por ciclo = $p_{\text{me}}\,A\,L$;
+$A = \pi (0{,}600)^2/4 = 0{,}283\,\text{m}^2$; $18\,\text{bar} = 1{,}8{\times}10^6$ Pa.
+
+**(b) Desenvolvimento:**
+$$W = p_{\text{me}}\,A\,L = 1{,}8{\times}10^6 \times 0{,}283 \times 2{,}4
+= 1{,}22{\times}10^6\,\text{J}$$
+
+**(c) Resultado:** ≈ 1,2 MJ de trabalho **por cilindro, por ciclo** — a energia de um
+carro popular a 180 km/h, entregue a cada volta do eixo.
+
+**(d) Análise crítica:** a m.e.p. esconde uma integral: o pico real de pressão passa
+de 150 bar, mas cai rápido na expansão — usar o pico no lugar da média superestimaria
+o trabalho ~8×. Com 6 cilindros a ~80 rpm, esses 1,2 MJ/ciclo viram a potência de MW
+do tópico 3.3.
+:::

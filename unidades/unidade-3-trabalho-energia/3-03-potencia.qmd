@@ -1,0 +1,78 @@
+---
+title: "3.3 — Potência de uma força"
+categories: [UE3, OE3.3-B3]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 3.3 [B3] Estabelecer e aplicar o conceito de potência de uma força
+            → naval: Potência indicada a partir de dimensões, rpm e m.e.p.; potência
+              no eixo propulsor
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 37-38 >}}
+
+Dois guindastes içam a mesma carga à mesma altura: fazem o **mesmo trabalho**. Mas um
+leva 30 s e o outro, 3 min — e é por isso que um custa mais caro. A grandeza que os
+distingue é a potência: a taxa com que o trabalho é feito. É nela que motores, máquinas
+de leme e guindastes são especificados.
+
+## Definição {{< ra OE3.3 B3 >}}
+
+$$P = \frac{dW}{dt} \qquad [\text{W} = \text{J/s}]$$
+
+Para uma força $\vec F$ atuando num corpo com velocidade $\vec v$, como
+$dW = \vec F \cdot d\vec r$:
+
+$$P = \vec{F}\cdot\vec{v} = Fv\cos\theta$$
+
+A forma $P = Fv$ (força alinhada com o movimento) é a mais usada a bordo: com potência
+limitada, força e velocidade são **inversamente proporcionais** — o mesmo motor que
+entrega grande tração a baixa velocidade não a sustenta em alta. Unidades práticas:
+$1\,\text{kW} = 10^3$ W; o horsepower persiste nas especificações,
+$1\,\text{HP} \approx 745{,}7$ W ($1\,\text{cv} \approx 735{,}5$ W).
+
+## Potência indicada: a fórmula do praxe de máquinas
+
+O tópico 3.1 deu o trabalho de **um ciclo, um cilindro**:
+$W = p_{\text{me}}\,A\,L$. Se o motor (2 tempos, um ciclo por volta) gira a $n$
+rotações por segundo e tem $N_c$ cilindros, a **potência indicada** — a âncora literal
+do 7.04 §1.4.1.1, "calculates indicated power, using given dimensions, r.p.m. and
+m.e.p." — é:
+
+$$\boxed{P_{\text{ind}} = p_{\text{me}} \cdot A \cdot L \cdot n \cdot N_c}$$
+
+(Para motor 4 tempos, um ciclo a cada duas voltas: usar $n/2$.) "Indicada" porque vem
+do diagrama indicador — é a potência que o **gás entrega ao pistão**. Descontadas as
+perdas mecânicas (mancais, bombas acopladas), resta a **potência no eixo**
+($P_{\text{eixo}} = \eta_{\text{mec}}\,P_{\text{ind}}$, $\eta_{\text{mec}} \sim$
+0,85–0,95), que é a que o hélice recebe — a cadeia completa de rendimentos fica para
+o tópico 3.5.
+
+<!-- SIMULAÇÃO SUGERIDA: Plotly (tabela Q4, SP4/SP10): P_ind em função de rpm e m.e.p.
+     (superfície ou curvas paramétricas), com marcador no ponto de operação; painel
+     lateral converte kW ↔ HP. Parâmetros: motor da SP abaixo, rpm 60–100,
+     m.e.p. 12–20 bar; potências resultantes na faixa SP4 (5–80 MW).
+     Paridade matplotlib no {python}. -->
+
+::: {.sp}
+O motor do tópico 3.1 — 6 cilindros, diâmetro 600 mm, curso 2,4 m, 2 tempos — opera a
+84 rpm com m.e.p. de 18 bar.
+
+**(a) Modelagem:** $P_{\text{ind}} = p_{\text{me}}\,A\,L\,n\,N_c$, com
+$n = 84/60 = 1{,}40$ ciclos/s e $W_{\text{ciclo}} = 1{,}22$ MJ por cilindro (3.1).
+
+**(b) Desenvolvimento:**
+$$P_{\text{ind}} = 1{,}22{\times}10^6 \times 1{,}40 \times 6 = 10{,}3\,\text{MW}$$
+
+Com rendimento mecânico de 0,90: $P_{\text{eixo}} \approx 9{,}2$ MW
+($\approx 12\,500$ HP).
+
+**(c) Resultado:** ≈ 10,3 MW indicados, ≈ 9,2 MW no eixo — porte típico de um
+cargueiro médio (faixa SP4).
+
+**(d) Análise crítica:** a fórmula multiplica cinco números medíveis — é literalmente
+a rotina de prova de mar. Note a sensibilidade: cair de 84 para 70 rpm derruba a
+potência na mesma proporção (~17%), mas a *velocidade do navio* cai menos que isso —
+a relação potência × velocidade é cúbica pela resistência, assunto de FIS-2. Erro de
+unidade clássico: rpm usado direto (sem ÷60) infla o resultado 60×.
+:::

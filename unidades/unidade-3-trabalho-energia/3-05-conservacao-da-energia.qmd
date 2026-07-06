@@ -1,0 +1,94 @@
+---
+title: "3.5 — Princípio da conservação da energia mecânica e da energia"
+categories: [UE3, OE3.5-B3]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 3.5 [B3] Conceituar e aplicar os princípios da conservação da Energia mecânica e
+            da Energia
+            → naval: Cadeia energética de bordo: combustível → trabalho mecânico →
+              propulsão (eficiências)
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 41-42 >}}
+
+Junte o teorema trabalho–energia (3.2) com a energia potencial (3.4) e nasce a lei de
+contabilidade mais poderosa da física: em certos sistemas, a soma $K + U$ simplesmente
+não muda. E quando muda — porque nada a bordo é sem atrito — a energia não desaparece:
+muda de forma, e a engenharia inteira do navio é o gerenciamento dessas conversões.
+
+## Conservação da energia mecânica {{< ra OE3.5 B3 >}}
+
+Separando, no teorema trabalho–energia, o trabalho das forças conservativas
+($W_{\text{cons}} = -\Delta U$) do das não conservativas:
+
+$$\Delta K = W_{\text{cons}} + W_{\text{nc}} = -\Delta U + W_{\text{nc}}$$
+
+$$\Rightarrow \quad \Delta(K + U) = W_{\text{nc}}$$
+
+Definindo a **energia mecânica** $E = K + U$: **se só forças conservativas trabalham**
+($W_{\text{nc}} = 0$),
+
+$$\boxed{K_1 + U_1 = K_2 + U_2}$$
+
+O método é contábil, não vetorial: escolher dois instantes, montar o balanço, resolver
+— sem decompor força nenhuma, sem conhecer a trajetória. Uma carga que desce $h$ do
+gato ao porão em queda livre chega com $v = \sqrt{2gh}$, seja caindo reto, seja
+pendulando no estropo.
+
+## Conservação da energia (geral)
+
+Quando $W_{\text{nc}} \neq 0$, a energia mecânica varia — mas a **energia total** não.
+O trabalho do atrito vira energia térmica ($|W_{\text{atrito}}| = f\,d \to$ calor no
+mancal, na defensa, no freio do guincho); o trabalho das máquinas vem da energia
+química do combustível. O princípio geral: **energia não se cria nem se destrói —
+converte-se**, e cada conversão real tem rendimento $\eta = E_{\text{útil}}/E_{\text{fornecida}} < 1$.
+
+A **cadeia energética do navio** é uma cascata dessas conversões:
+
+$$\text{química (combustível)}
+\xrightarrow{\;\eta_{\text{térm}} \approx 0{,}50\;} \text{trabalho indicado}
+\xrightarrow{\;\eta_{\text{mec}} \approx 0{,}90\;} \text{eixo}
+\xrightarrow{\;\eta_{\text{hélice}} \approx 0{,}65\;} \text{propulsão}$$
+
+Rendimentos em série **multiplicam**: $\eta_{\text{total}} \approx 0{,}50 \times 0{,}90
+\times 0{,}65 \approx 0{,}29$ — de cada 100 J do HFO, ~29 J viram trabalho útil de
+empurrar o navio; o resto sai como calor nos gases de descarga, na água de resfriamento
+e na esteira. (Os 35–50% da faixa SP10 referem-se ao primeiro elo, o motor.)
+
+::: {.callout-warning}
+**Erro clássico:** aplicar $K_1 + U_1 = K_2 + U_2$ com atrito em cena. Havendo força
+não conservativa trabalhando, o balanço é $\Delta(K+U) = W_{\text{nc}}$ — a energia
+mecânica **diminui** (tópico 3.6). Conservação da energia total sempre vale;
+conservação da energia *mecânica*, só sem dissipação.
+:::
+
+<!-- SIMULAÇÃO SUGERIDA: Anime.js (tabela Q4 — sequência didática passo a passo,
+     SP10): diagrama de Sankey animado da cadeia energética combustível → indicado →
+     eixo → propulsão, com os fluxos de perda (gases, resfriamento, esteira)
+     destacados etapa por etapa e sliders dos três rendimentos.
+     Parâmetros: P_ind = 10,3 MW (motor dos tópicos 3.1/3.3), rendimentos nas faixas
+     do texto. Paridade matplotlib no {python}: barras empilhadas da cascata. -->
+
+::: {.sp}
+O motor dos tópicos anteriores entrega 10,3 MW indicados queimando HFO de poder
+calorífico 40 MJ/kg, com $\eta_{\text{térm}} = 0{,}48$ (do combustível ao indicado),
+$\eta_{\text{mec}} = 0{,}90$ e $\eta_{\text{hélice}} = 0{,}65$.
+
+**(a) Modelagem:** cadeia de rendimentos em série; consumo = potência
+química/poder calorífico.
+
+**(b) Desenvolvimento:** potência química
+$= 10{,}3/0{,}48 = 21{,}5\,\text{MW}$; consumo $= 21{,}5{\times}10^6 / 40{\times}10^6
+= 0{,}54\,\text{kg/s} \approx 1{,}9\,\text{t/h}$. Potência propulsiva:
+$$P_{\text{prop}} = 10{,}3 \times 0{,}90 \times 0{,}65 = 6{,}0\,\text{MW}
+\qquad \eta_{\text{total}} = \frac{6{,}0}{21{,}5} = 0{,}28$$
+
+**(c) Resultado:** ~1,9 t de HFO por hora para 6,0 MW úteis de propulsão — 28% do
+que o combustível continha.
+
+**(d) Análise crítica:** os 72% "perdidos" não somem — saem como calor, e parte é
+recuperada a bordo (turbocompressor, caldeira de gases de descarga, aquecimento do
+próprio HFO), elevando o aproveitamento global. O balanço energético é a ferramenta:
+qualquer economia real de combustível ataca um elo identificável desta cadeia.
+:::

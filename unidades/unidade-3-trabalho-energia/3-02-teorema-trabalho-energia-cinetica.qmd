@@ -1,0 +1,89 @@
+---
+title: "3.2 — O Teorema Trabalho–Energia Cinética"
+categories: [UE3, OE3.2-B3]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 3.2 [B3] Definir e aplicar o Teorema Trabalho Energia Cinética
+            → naval: Energia cinética do navio dissipada na parada (stopping
+              distance / track reach)
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 35-36 >}}
+
+Quanta energia carrega um navio de 45 000 t a 14 nós? E para onde ela vai quando ele
+para? O teorema deste tópico responde às duas perguntas de uma vez: a energia "de
+movimento" tem uma expressão exata, e a única forma de tirá-la do navio é uma força
+fazendo trabalho negativo ao longo de uma distância — que é precisamente por que
+distâncias de parada são longas.
+
+## Dedução do teorema {{< ra OE3.2 B3 >}}
+
+Partícula de massa $m$ sob força resultante $F$ ao longo de $x$. Combinando a 2ª lei
+com a regra da cadeia:
+
+$$F = ma = m\frac{dv}{dt} = m\frac{dv}{dx}\underbrace{\frac{dx}{dt}}_{v} = m\,v\frac{dv}{dx}$$
+
+Integrando o trabalho da resultante entre os estados 1 e 2:
+
+$$W_{\text{res}} = \int_{x_1}^{x_2} F\,dx = \int_{v_1}^{v_2} m\,v\,dv
+= \tfrac{1}{2}mv_2^2 - \tfrac{1}{2}mv_1^2$$
+
+Definindo a **energia cinética** $K = \tfrac{1}{2}mv^2$ (em joules), o resultado é o
+**Teorema Trabalho–Energia Cinética**:
+
+$$\boxed{W_{\text{res}} = \Delta K = K_2 - K_1}$$
+
+O trabalho da resultante não "gasta" nem "cria" — **converte**: positivo, o corpo
+ganha velocidade; negativo, perde. E como $K \propto v^2$, dobrar a velocidade
+quadruplica a energia a remover.
+
+## A parada do navio, agora por energia
+
+No *crash stop* do tópico 2.3, a força de frenagem $F$ (média) atua ao longo da
+distância de parada $d$ retirando toda a energia cinética inicial:
+
+$$F\,d = \tfrac{1}{2}mv_0^2 \quad \Rightarrow \quad d = \frac{mv_0^2}{2F}$$
+
+— a mesma fórmula obtida por cinemática, agora com leitura energética: a distância de
+parada é o **espaço necessário para a força dissipar a energia**. Dela saem as duas
+regras práticas do passadiço:
+
+- $d \propto v_0^2$: chegar com metade da velocidade exige **1/4** da distância;
+- $d \propto m$: a razão carregado/lastro do Model Course (até 3×) é a razão das
+  energias cinéticas para o mesmo $F$.
+
+::: {.callout-warning}
+**Erro clássico:** aplicar o teorema com o trabalho de **uma** força só. O teorema vale
+para o trabalho da **resultante** (ou a soma dos trabalhos de todas as forças). Na
+parada real trabalham as máquinas atrás *e* a resistência da água — omitir uma delas
+superestima $d$.
+:::
+
+<!-- SIMULAÇÃO SUGERIDA: Plotly (tabela Q4, SP8): barras de energia (K restante ×
+     energia dissipada) evoluindo com a distância percorrida na parada, sincronizadas
+     com a curva v(x) = v0√(1 − x/d); sliders de v0 e Δ. Parâmetros: v0 8–16 nós,
+     Δ 15–60 mil t, d na faixa SP8 (5–15 comprimentos).
+     Paridade matplotlib no {python}. -->
+
+::: {.sp}
+O navio do tópico 2.3 — deslocamento 45 000 t, 14 nós ($v_0 = 7{,}20$ m/s), força média
+de frenagem 1,2 MN.
+
+**(a) Modelagem:** teorema trabalho–energia entre "14 nós" e "parado":
+$F\,d = \frac{1}{2}mv_0^2$.
+
+**(b) Desenvolvimento:**
+$$K_1 = \tfrac{1}{2} \times 45{\times}10^6 \times 7{,}20^2 = 1{,}17{\times}10^9\,\text{J}
+\qquad
+d = \frac{K_1}{F} = \frac{1{,}17{\times}10^9}{1{,}2{\times}10^6} = 971\,\text{m}$$
+
+**(c) Resultado:** 1,17 GJ de energia cinética — dissipados ao longo dos mesmos
+971 m do cálculo cinemático (como tinha que ser).
+
+**(d) Análise crítica:** 1,17 GJ é a energia de ~280 kg de TNT: é o que um cais ou
+outro casco absorveria num abalroamento a 14 nós, e por que "chegar devagar" é a
+única variável que o oficial realmente controla ($d$ e a energia caem com $v^2$).
+A convergência exata com o tópico 2.3 não é coincidência — o teorema **é** a 2ª lei
+integrada em distância.
+:::
