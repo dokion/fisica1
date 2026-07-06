@@ -1,0 +1,41 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - libs/
+
+website:
+  title: "Física 1 — CIABA"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Syllabus
+  sidebar:
+    style: docked
+    search: true
+    contents:
+      - href: index.qmd
+        text: Syllabus
+      - section: "UE 1 — Equilíbrio da Partícula e do Corpo Rígido"
+        contents: unidades/unidade-1-equilibrio/*.qmd
+      - section: "UE 2 — Cinemática e Dinâmica da Partícula"
+        contents: unidades/unidade-2-cinematica-dinamica/*.qmd
+      - section: "UE 3 — Trabalho e Energia"
+        contents: unidades/unidade-3-trabalho-energia/*.qmd
+      - section: "UE 4 — Sistemas de Partículas e Corpos Rígidos"
+        contents: unidades/unidade-4-sistemas-particulas/*.qmd
+      - section: "UE 5 — Dinâmica da Rotação"
+        contents: unidades/unidade-5-rotacao/*.qmd
+
+format:
+  html:
+    theme: [brand, theme.scss]
+    toc: true
+    toc-title: "Nesta página"
+    number-sections: false
+    lang: pt-BR
+    html-math-method: mathjax
+
+execute:
+  echo: true
+  warning: false
