@@ -1,0 +1,96 @@
+---
+title: "2.2 — Cinemática vetorial e movimento relativo"
+categories: [UE2, OE2.2-B1]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 2.2 [B1] Definir a cinemática em duas e três dimensões e o conceito de movimento
+            relativo
+            → naval: Plotagem radar: movimento relativo × verdadeiro, CPA/TCPA;
+              triângulo de velocidades com corrente
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 17-18 >}}
+
+Na tela do radar, o navio que cruza a sua proa não se move como ele "realmente" se move:
+o eco desliza pela tela com a velocidade dele *menos* a sua. Errar essa subtração de
+vetores custa colisões — e é por isso que a plotagem radar é, na formação do oficial, o
+lugar onde a cinemática vetorial deixa de ser abstração.
+
+## Posição, velocidade e aceleração como vetores {{< ra OE2.2 B1 >}}
+
+Em duas ou três dimensões, a posição de uma partícula é o vetor
+$\vec{r}(t) = x(t)\,\hat{\imath} + y(t)\,\hat{\jmath} + z(t)\,\hat{k}$, e as definições
+do tópico 2.1 se aplicam componente a componente:
+
+$$\vec{v} = \frac{d\vec{r}}{dt} = \frac{dx}{dt}\hat{\imath} + \frac{dy}{dt}\hat{\jmath} + \frac{dz}{dt}\hat{k},
+\qquad
+\vec{a} = \frac{d\vec{v}}{dt}$$
+
+Duas propriedades geométricas valem para qualquer trajetória:
+
+- $\vec{v}$ é sempre **tangente** à trajetória (é para onde a proa da derrota aponta);
+- $\vec{a}$ pode ter componente ao longo de $\vec v$ (muda o módulo — acelerar/frenar) e
+  perpendicular a $\vec v$ (muda a direção — curvar). O tópico 2.4 separa as duas.
+
+Cada componente evolui de forma independente: o movimento em $x$ não "sabe" do movimento
+em $y$. É o princípio que permite tratar um deslocamento NE como um avanço N somado a um
+avanço E — a decomposição que a navegação estimada faz o tempo todo.
+
+## Movimento relativo
+
+Velocidade é sempre **em relação a um referencial**. Se um navio B tem velocidade
+$\vec{v}_B$ e o seu navio A tem velocidade $\vec{v}_A$ (ambas em relação à Terra), a
+velocidade de B **vista de A** é
+
+$$\vec{v}_{B/A} = \vec{v}_B - \vec{v}_A$$
+
+— e as posições relativas evoluem com $\vec r_{B/A}(t) = \vec r_{B/A}(0) + \vec v_{B/A}\,t$.
+
+É exatamente o que o radar mostra no modo *relative motion*: a linha que o eco descreve
+na tela é $\vec{v}_{B/A}$, não $\vec{v}_B$. Dessa linha saem os dois números da decisão
+anticolisão (7.03 §1.3):
+
+- **CPA** (*closest point of approach*): a menor distância entre os navios — a distância
+  do seu navio à **reta** do movimento relativo;
+- **TCPA**: o instante em que ela ocorre.
+
+Recuperar o movimento **verdadeiro** do alvo é somar de volta o seu próprio vetor:
+$\vec{v}_B = \vec{v}_{B/A} + \vec{v}_A$ — o "triângulo de velocidades" resolvido no
+plotting sheet ou, automaticamente, pelo ARPA.
+
+O mesmo triângulo aparece com **corrente**: a velocidade no fundo (sobre a Terra) é a
+velocidade na superfície (através da água) mais a da corrente,
+$\vec{v}_{\text{fundo}} = \vec{v}_{\text{água}} + \vec{v}_{\text{corrente}}$ — governar
+um rumo que compense o abatimento é resolver esse triângulo para a direção desejada.
+
+<!-- SIMULAÇÃO SUGERIDA: p5.js (tabela Q4 — movimento contínuo, SP12): "tela de radar"
+     com navio próprio ao centro e alvo com curso/velocidade ajustáveis; alternar
+     exibição relativo × verdadeiro; desenhar CPA/TCPA em tempo real.
+     Parâmetros: velocidades 5–20 nós, corrente 0,5–4 nós (faixa SP12).
+     Paridade matplotlib no {python}: diagrama vetorial do triângulo de velocidades
+     com CPA geométrico. -->
+
+::: {.sp}
+Seu navio segue rumo Norte a 12 nós. O radar mostra um alvo a 8 MN na marcação 045°,
+cujo eco desliza na tela em direção 225° (isto é, direto para o seu navio) a 16 nós
+relativos.
+
+**(a) Modelagem:** o eco vem *pela reta* que liga o alvo ao navio próprio →
+CPA = 0; movimento verdadeiro do alvo: $\vec v_B = \vec v_{B/A} + \vec v_A$.
+
+**(b) Desenvolvimento:** TCPA = distância/velocidade relativa
+$= 8/16\,\text{h} = 30\,\text{min}$. Componentes (N-S, E-W) em nós:
+$\vec v_{B/A} = 16 \angle 225° = (-11{,}3, -11{,}3)$; $\vec v_A = (12, 0)$:
+$$\vec v_B = (12 - 11{,}3,\; 0 - 11{,}3) = (0{,}7,\; -11{,}3) \;\Rightarrow\;
+v_B \approx 11{,}3\,\text{nós, rumo} \approx 267°$$
+
+**(c) Resultado:** risco de colisão em 30 min com um navio que, na verdade, segue
+para Oeste a ~11 nós — situação de cruzamento, não de roda a roda.
+
+**(d) Análise crítica:** a manobra correta (RIPEAM) depende do movimento
+**verdadeiro**, mas o risco (CPA≈0) se lê no **relativo** — confundir os dois planos
+é o erro clássico de plotagem. Note também que mudar a própria velocidade muda
+$\vec v_{B/A}$ e, portanto, o CPA: é assim que uma redução de máquinas "abre" o CPA
+sem guinar.
+:::

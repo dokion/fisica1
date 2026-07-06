@@ -1,0 +1,94 @@
+---
+title: "2.4 — Componentes tangencial e centrípeta em movimento curvilíneo"
+categories: [UE2, OE2.4-B2]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 2.4 [B2] Descrever a decomposição da força resultante e da aceleração em
+            componentes tangencial e centrípeta em um movimento curvilíneo
+            → naval: Curva de giro: advance, transfer, diâmetro tático; aceleração
+              centrípeta no giro
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 21-22 >}}
+
+Leme a bordo, e o navio descreve sua curva de giro. A velocidade quase não muda de
+módulo — e no entanto há aceleração o tempo todo, porque a **direção** muda. Separar a
+aceleração em "parte que muda o quão rápido" e "parte que muda o para onde" é o que
+este tópico faz, e é a linguagem em que as informações de manobra do passadiço estão
+escritas.
+
+## A decomposição {{< ra OE2.4 B2 >}}
+
+Em qualquer trajetória curva, a aceleração se decompõe em dois eixos naturais — a
+direção de $\vec v$ (tangente) e a perpendicular a ela, apontando para o centro de
+curvatura:
+
+$$\vec{a} = \underbrace{\frac{dv}{dt}\,\hat{u}_t}_{\text{tangencial}}
+\;+\; \underbrace{\frac{v^2}{R}\,\hat{u}_n}_{\text{centrípeta}}$$
+
+- A componente **tangencial** $a_t = dv/dt$ muda o **módulo** da velocidade. É a que as
+  máquinas e a resistência controlam.
+- A componente **centrípeta** $a_c = v^2/R$ muda a **direção**. Existe sempre que
+  $R$ é finito — mesmo com velocidade de módulo constante — e aponta para dentro da
+  curva. $R$ é o raio de curvatura local da trajetória.
+
+Multiplicando pela massa, a mesma decomposição vale para a força resultante
+($\sum \vec F = m\vec a$):
+
+$$F_t = m\frac{dv}{dt}, \qquad F_c = \frac{m v^2}{R}$$
+
+**Não existe "força centrífuga"** agindo no navio: o que existe é uma força real
+apontando para o centro (no navio, a força hidrodinâmica lateral no casco e no leme)
+produzindo $a_c$. A sensação "para fora" é a inércia vista de dentro do referencial
+que gira.
+
+## Movimento circular uniforme e a curva de giro
+
+No caso particular $v$ constante e $R$ constante (movimento circular uniforme),
+$a_t = 0$ e resta apenas
+
+$$a_c = \frac{v^2}{R} = \omega^2 R, \qquad \text{com } v = \omega R$$
+
+A fase estável da **curva de giro** do navio é aproximadamente isso. Os termos padrão
+das informações de manobra (7.03 §1.9.1.1) são geométricos: **advance** (avanço na
+direção original até guinar 90°), **transfer** (afastamento lateral nessa guinada) e
+**diâmetro tático** (afastamento ao completar 180°, tipicamente $\sim 2R$). Duas
+consequências físicas imediatas:
+
+- $F_c = mv^2/R$: reduzir a velocidade antes de guinar **em águas restritas** reduz
+  quadraticamente a força lateral necessária — e o navio "obedece" com menos deriva;
+- carregado ($m$ maior), a mesma força hidrodinâmica produz curva mais aberta — por
+  isso os círculos de giro do ensaio são levantados carregado *e* em lastro.
+
+Durante o giro, a aceleração centrípeta tem ainda um efeito colateral visível: aplicada
+ao centro de massa, com a força lateral agindo no casco abaixo dele, gera o **momento**
+que aderna o navio para fora da curva — a banda de giro que o passadiço conhece bem.
+
+<!-- SIMULAÇÃO SUGERIDA: p5.js (tabela Q4 — movimento contínuo, SP8/SP12): navio
+     percorrendo curva de giro com vetores a_t e a_c desenhados sobre o casco;
+     sliders de v e R mostrando advance/transfer/diâmetro tático e o valor de
+     a_c = v²/R. Parâmetros: v 8–20 nós, diâmetro tático 3–6 comprimentos.
+     Paridade matplotlib no {python}: trajetória com vetores nas mesmas condições. -->
+
+::: {.sp}
+No ensaio de giro, um navio de 200 m mantém 16 nós numa curva de diâmetro tático de
+900 m (fase estável ≈ circular, $R \approx 450$ m).
+
+**(a) Modelagem:** MCU na fase estável: $a_t \approx 0$, $a_c = v^2/R$;
+$v = 16 \times 0{,}514 = 8{,}23\,\text{m/s}$.
+
+**(b) Desenvolvimento:**
+$$a_c = \frac{v^2}{R} = \frac{8{,}23^2}{450} = 0{,}150\,\text{m/s}^2 \;(\approx 1{,}5\%\,g)
+\qquad
+F_c = m\,a_c = 50{\times}10^6 \times 0{,}150 = 7{,}5\,\text{MN} \;\;(\Delta = 50\,000\,\text{t})$$
+
+**(c) Resultado:** o casco e o leme sustentam ≈ 7,5 MN de força lateral só para
+manter a curva.
+
+**(d) Análise crítica:** a 8 nós (metade da velocidade), $F_c$ cai a 1/4
+(≈ 1,9 MN) — a dependência $v^2$ é o argumento físico para reduzir antes de guinar
+em canal. E os 1,5% de $g$ horizontais aplicados no centro de massa explicam a banda
+de giro: pouca aceleração, mas braço suficiente para inclinar visivelmente um navio
+com GM pequeno.
+:::

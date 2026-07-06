@@ -1,0 +1,84 @@
+---
+title: "2.1 — Rudimentos de cálculo: derivada, integral e o teorema fundamental"
+categories: [UE2, OE2.1-B1]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 2.1 [B1] Definir os conceitos de derivada e integral motivados pela descrição
+            cinemática do movimento em uma dimensão
+            → naval: Curva v(t) na parada do navio; distância percorrida (head reach)
+              como área sob a curva
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 15-16 >}}
+
+"Máquinas atrás, toda força" — e o navio ainda percorre quilômetros antes de parar. A
+pergunta *quanto* ele percorre é respondida por uma curva $v(t)$ que não é reta nenhuma:
+para lê-la, precisamos de duas ferramentas — a derivada, que extrai a taxa de variação
+instante a instante, e a integral, que acumula o efeito total. Este tópico as define
+pelo caminho em que elas nasceram: a cinemática.
+
+## Velocidade instantânea e a derivada {{< ra OE2.1 B1 >}}
+
+A velocidade média entre $t$ e $t + \Delta t$ é $\bar{v} = \Delta x / \Delta t$. Mas o
+odômetro do navio não marca médias — marca o valor *agora*. A **velocidade instantânea**
+é o limite da média em intervalos cada vez menores:
+
+$$v(t) = \lim_{\Delta t \to 0} \frac{\Delta x}{\Delta t} = \frac{dx}{dt}$$
+
+Esse limite é a **derivada** de $x(t)$: geometricamente, a inclinação da reta tangente
+ao gráfico $x \times t$ naquele instante. Do mesmo modo, a aceleração é a derivada da
+velocidade:
+
+$$a(t) = \frac{dv}{dt} = \frac{d^2x}{dt^2}$$
+
+Regras mínimas para este curso (potência, soma e constante):
+
+$$\frac{d}{dt}\big(t^n\big) = n\,t^{n-1}, \qquad
+\frac{d}{dt}\big(cf\big) = c\frac{df}{dt}, \qquad
+\frac{d}{dt}\big(f+g\big) = \frac{df}{dt} + \frac{dg}{dt}$$
+
+Exemplo: se $x(t) = 5t^2 + 3t$ (metros, segundos), então $v(t) = 10t + 3$ e $a = 10\,\text{m/s}^2$.
+
+## Distância como acúmulo: a integral
+
+O problema inverso: conhecida $v(t)$, quanto se andou entre $t_1$ e $t_2$? Fatiando o
+intervalo em pedaços $\Delta t$ pequenos, em cada um a distância é $\approx v\,\Delta t$
+— a área de um retângulo fino sob a curva $v(t)$. Somando e refinando:
+
+$$\Delta x = \int_{t_1}^{t_2} v(t)\,dt = \text{área sob a curva } v(t)$$
+
+O **Teorema Fundamental do Cálculo** fecha o círculo: derivar e integrar são operações
+inversas —
+
+$$x(t_2) - x(t_1) = \int_{t_1}^{t_2} \frac{dx}{dt}\,dt$$
+
+Na prática de bordo, é assim que se lê o diagrama de parada do navio (a curva $v(t)$ do
+*crash stop* nas informações de manobra exigidas pela IMO): a **distância de parada**
+(*head reach*) é a área sob essa curva — mesmo sem fórmula fechada para $v(t)$, a área
+pode ser somada aos retângulos, que é exatamente o que o eletrônico de bordo faz.
+
+<!-- SIMULAÇÃO SUGERIDA: Plotly (tabela Q4): curva v(t) de parada de navio
+     (decaimento realista, ex. v(t) = v0/(1 + t/τ)) com (i) reta tangente móvel
+     mostrando a = dv/dt e (ii) preenchimento progressivo da área sob a curva
+     acumulando o head reach. Parâmetros: v0 = 15 nós, parada total ~8–12 min,
+     head reach na faixa SP8 (5–15 comprimentos). Paridade matplotlib no {python}. -->
+
+::: {.sp}
+No ensaio de *crash stop* de um navio de 180 m, a velocidade cai de 15 nós de forma
+aproximadamente linear até zero em 10 min.
+
+**(a) Modelagem:** $v(t)$ linear → área sob a curva = triângulo;
+$v_0 = 15 \times 0{,}514 = 7{,}71\,\text{m/s}$; $t_f = 600$ s.
+
+**(b) Desenvolvimento:**
+$$\Delta x = \int_0^{t_f} v\,dt = \frac{1}{2} v_0 t_f = \frac{1}{2}\times 7{,}71 \times 600 = 2313\,\text{m}$$
+
+**(c) Resultado:** *head reach* ≈ 2,3 km ≈ **12,9 comprimentos do navio**.
+
+**(d) Análise crítica:** o valor cai na faixa realista (5–15 comprimentos) e mostra por
+que a decisão de parar precisa ser tomada milhas antes do perigo. A hipótese linear é
+otimista — na parada real a desaceleração enfraquece com a velocidade e a curva tem
+cauda longa; a integral (área) captura isso, a "média escolar" não. Não esquecer a
+conversão nó → m/s: usar 15 "direto" superestimaria tudo por um fator ~2.
+:::

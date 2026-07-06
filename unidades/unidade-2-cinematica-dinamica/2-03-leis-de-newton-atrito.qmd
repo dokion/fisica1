@@ -1,0 +1,107 @@
+---
+title: "2.3 — Leis de Newton aplicadas a sistemas sem e com atrito"
+categories: [UE2, OE2.3-B3]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 2.3 [B3] Conceituar as leis de Newton e aplicá-las a sistemas com e sem atrito
+            → naval: Inércia do navio: distância de parada carregado até 3× a
+              distância em lastro
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 19-20 >}}
+
+Por que o mesmo navio, com as mesmas máquinas dando atrás, percorre até **três vezes
+mais** para parar quando está carregado do que em lastro? A resposta inteira está na
+segunda lei de Newton — e em saber separar, no diagrama de corpo livre, o que empurra
+do que resiste.
+
+## As três leis {{< ra OE2.3 B3 >}}
+
+**1ª lei (inércia):** na ausência de força resultante, um corpo mantém seu estado —
+repouso ou MRU. Um VLCC a 15 nós com máquinas paradas continua a 15 nós *no instante
+seguinte*: nada o para além das forças que a água e o ar exercerem. Inércia não é
+força — é a ausência de necessidade dela.
+
+**2ª lei (fundamental):** a resultante produz aceleração proporcional e inversamente
+proporcional à massa:
+
+$$\sum \vec{F} = m\vec{a}$$
+
+É uma equação **vetorial**: vale por componente, e a massa é o coeficiente de
+"resistência à mudança". Dobrar a massa com a mesma resultante → metade da aceleração.
+
+**3ª lei (ação e reação):** se A empurra B com $\vec F$, B empurra A com $-\vec F$ —
+forças em **corpos diferentes**, nunca se cancelam no mesmo diagrama. O hélice empurra
+a água para ré; a água empurra o navio para vante (a UE4 fará disso a propulsão).
+
+## O método, com e sem atrito
+
+O roteiro de aplicação é invariável: isolar cada corpo → diagrama de corpo livre →
+escolher eixos (um deles na direção do movimento) → escrever $\sum F = ma$ por eixo.
+
+**Sem atrito** — bloco em plano inclinado de ângulo $\theta$ (rampa de acesso, carga
+escorregando em convés adernado):
+
+$$\text{eixo } x \text{ (descida): } mg\sin\theta = ma \;\Rightarrow\; a = g\sin\theta
+\qquad
+\text{eixo } y: \; N = mg\cos\theta$$
+
+**Com atrito** — o mesmo bloco, agora com coeficientes $\mu_s$ (estático) e $\mu_k$
+(cinético):
+
+- O bloco só desliza se a componente motora vencer o atrito estático máximo:
+  $mg\sin\theta > \mu_s\,mg\cos\theta \;\Rightarrow\; \tan\theta > \mu_s$.
+  O ângulo crítico $\theta_c = \arctan\mu_s$ é o "ângulo de peação": um convés que
+  aderna além dele deixa carga solta correr.
+- Deslizando, a equação do movimento fica
+  $$ma = mg\sin\theta - \mu_k\,mg\cos\theta \;\Rightarrow\; a = g(\sin\theta - \mu_k\cos\theta)$$
+
+## A inércia do navio: a conta da parada
+
+Modelo mínimo do *crash stop*: massa $m$ (deslocamento), força de frenagem $F$
+aproximadamente constante (máquinas atrás + resistência da água). Da 2ª lei,
+$a = F/m$, e da cinemática ($v^2 = v_0^2 - 2ad$ com $v = 0$):
+
+$$d = \frac{v_0^2}{2a} = \frac{m\,v_0^2}{2F}$$
+
+A distância de parada é **proporcional à massa**. Um navio que desloca 60 000 t
+carregado e 20 000 t em lastro, com a mesma força de frenagem, para em distância 3×
+maior quando carregado — exatamente a razão "up to three times" registrada no Model
+Course 7.03 (§1.9.1.1). A física da frase de manual é uma linha de Newton.
+
+::: {.callout-warning}
+**Erro clássico:** tratar a 3ª lei como equilíbrio ("a reação cancela a ação, então
+nada acelera"). Ação e reação agem em **corpos diferentes**: a água acelera o navio, o
+navio acelera a água. No diagrama de corpo livre do navio só entram as forças **sobre
+o navio**.
+:::
+
+<!-- SIMULAÇÃO SUGERIDA: Matter.js (tabela Q4 — interação/atrito, SP8): bloco sobre
+     plano com inclinação controlável e μs/μk ajustáveis, mostrando o ângulo crítico
+     de deslizamento; segundo modo: "navio" 1D com massa selecionável (lastro ×
+     carregado) sob força de frenagem constante, comparando distâncias de parada.
+     Parâmetros: μs 0,2–0,6; deslocamentos 20–60 mil t; parada na faixa SP8.
+     Paridade matplotlib no {python}: d(m) e x(t) dos dois casos. -->
+
+::: {.sp}
+Um navio de deslocamento 45 000 t navega a 14 nós quando as máquinas dão atrás,
+produzindo força média de frenagem (máquinas + água) de 1,2 MN.
+
+**(a) Modelagem:** movimento 1D, força constante → $a = F/m$ constante;
+$v_0 = 14 \times 0{,}514 = 7{,}20\,\text{m/s}$.
+
+**(b) Desenvolvimento:**
+$$a = \frac{1{,}2{\times}10^6}{45{\times}10^6\,\text{kg}} = 0{,}0267\,\text{m/s}^2
+\qquad
+d = \frac{v_0^2}{2a} = \frac{7{,}20^2}{2 \times 0{,}0267} = 971\,\text{m}$$
+
+**(c) Resultado:** ≈ 1 km de distância de parada (≈ 5,4 comprimentos para um navio
+de 180 m) — dentro da faixa realista de 5–15 comprimentos.
+
+**(d) Análise crítica:** em lastro (Δ = 15 000 t), a mesma força daria
+$d \approx 324$ m — a razão 3:1 do Model Course aparece por $d \propto m$. O modelo de
+força constante é grosseiro (a resistência da água cai com $v$), mas erra para menos:
+a cauda de baixa velocidade alonga a parada real. Por isso as informações de manobra
+do passadiço trazem as curvas medidas no ensaio, não a fórmula.
+:::
