@@ -1,0 +1,89 @@
+---
+title: "1.3 — Forças distribuídas"
+categories: [UE1, OE1.4-B3]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 1.4 [B3] Definir o conceito de força distribuída em uma superfície, e calcular a
+            força total equivalente e seu ponto de aplicação
+            → naval: Distribuição peso–empuxo ao longo do casco; pressão hidrostática
+              no costado
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 7-8 >}}
+
+Nenhuma força real de bordo é aplicada num ponto: a água empurra o costado inteiro, o
+grão se apoia em todo o fundo do porão, o peso do navio se espalha ao longo do
+comprimento. Para usar a estática do tópico anterior, precisamos substituir essas
+distribuições por **uma única força equivalente no ponto certo** — e "o ponto certo" é
+o que decide se a conta de torque sai certa ou errada.
+
+## Força distribuída e carga equivalente {{< ra OE1.4 B3 >}}
+
+Uma força distribuída sobre uma linha é descrita pela **intensidade de carga**
+$w(x)$, em N/m (sobre uma superfície, pela pressão $p$, em N/m² = Pa). A força total
+equivalente é a soma de todas as contribuições elementares:
+
+$$F = \int_0^L w(x)\,dx$$
+
+— geometricamente, a **área do diagrama de carga**. E o ponto de aplicação $\bar{x}$ é
+o que preserva o torque da distribuição original:
+
+$$\bar{x} = \frac{1}{F}\int_0^L x\,w(x)\,dx$$
+
+— o **centroide** do diagrama de carga. Dois casos cobrem quase tudo na prática:
+
+**Carga uniforme** ($w$ constante — ex.: peso de granel homogêneo sobre o fundo):
+$$F = wL, \qquad \bar{x} = \frac{L}{2}$$
+
+**Carga triangular** ($w(x) = w_0\,x/L$, cresce linearmente de 0 a $w_0$):
+$$F = \int_0^L w_0\frac{x}{L}\,dx = \frac{w_0 L}{2}, \qquad
+\bar{x} = \frac{2}{F}\!\int_0^L x\,w_0\frac{x}{L}\,dx \cdot \frac{1}{2} = \frac{2L}{3}$$
+
+A resultante da carga triangular fica a **2/3 do vértice de carga nula** — não no meio.
+
+## O caso naval: pressão hidrostática num anteparo
+
+A pressão da água cresce linearmente com a profundidade, $p = \rho g h$: sobre um
+anteparo vertical, o diagrama de carga é exatamente o triângulo acima. Para um anteparo
+de largura $b$ e coluna d'água de altura $H$:
+
+$$F = \int_0^H \rho g h \, b\,dh = \frac{\rho g b H^2}{2}$$
+
+aplicada no **centro de pressão**, a $2H/3$ da superfície livre (ou $H/3$ do fundo).
+É por isso que os reforços estruturais de anteparos e comportas se concentram embaixo:
+a carga mora no terço inferior.
+
+O mesmo raciocínio, aplicado ao navio inteiro, explica os esforços longitudinais do
+casco: o **peso** se distribui de um jeito (máquinas, carga, superestrutura) e o
+**empuxo** de outro (proporcional ao volume imerso de cada seção). Onde as duas curvas
+não coincidem localmente, nascem força cortante e momento fletor — o alquebramento
+(*hogging*/*sagging*) que o tópico 1.5 traduz em tensões no aço.
+
+<!-- SIMULAÇÃO SUGERIDA: Plotly (tabela Q4 — gráfico explorável): diagrama de carga
+     w(x) selecionável (uniforme/triangular/trapezoidal) com resultante F e centroide
+     x̄ desenhados; caso 2: anteparo com slider de H mostrando F ∝ H² e centro de
+     pressão em 2H/3. Parâmetros: b = 12 m, H de 2 a 10 m, água salgada
+     ρ = 1025 kg/m³ (faixas SP1/SP9). Paridade matplotlib no {python}. -->
+
+::: {.sp}
+Um anteparo estanque plano de um tanque de lastro tem 12 m de largura e retém água
+salgada ($\rho = 1025\,\text{kg/m}^3$) até a altura de 8 m.
+
+**(a) Modelagem:** carga triangular de pressão $p(h) = \rho g h$; força total = área do
+diagrama × largura; aplicação no centro de pressão a $2H/3$ da superfície.
+
+**(b) Desenvolvimento:**
+$$F = \frac{\rho g b H^2}{2} = \frac{1025 \times 9{,}81 \times 12 \times 8^2}{2}
+= 3{,}86{\times}10^6\,\text{N}$$
+
+$$h_{cp} = \frac{2H}{3} = 5{,}33\,\text{m da superfície}$$
+
+**(c) Resultado:** $F \approx 3{,}9$ MN (≈ 394 t-força) aplicados a 5,3 m de
+profundidade.
+
+**(d) Análise crítica:** dobrar a coluna d'água **quadruplica** a força ($F \propto
+H^2$) — um tanque "só um pouco mais cheio" carrega o anteparo muito mais que a intuição
+linear sugere. E o ponto de aplicação desce com o enchimento, mudando o braço do torque
+sobre as fixações inferiores.
+:::

@@ -1,0 +1,102 @@
+---
+title: "1.1 — Conceito de força e estática da partícula"
+categories: [UE1, OE1.1-B2, OE1.2-B3]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 1.1 [B2] Estabelecer o conceito de força como grandeza vetorial e descrever as
+            principais forças a serem trabalhadas nessa UE: peso, forças de tração e
+            compressão em cordas e estruturas, força de atrito seco, força normal
+            → naval: Cargas de tração, compressão e cisalhamento em cabos de amarração,
+              estropos e estruturas de bordo
+OE 1.2 [B3] Estabelecer a condição para equilíbrio de uma partícula e aplicá-la a
+            situações relevantes
+            → naval: Equilíbrio peso–empuxo do navio; carga suspensa por dois estropos
+              (ângulo de lingada)
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 1-2 >}}
+
+Um navio atracado é um catálogo de forças em equilíbrio: o peso puxa para baixo, o empuxo
+sustenta, os cabos de amarração trabalham à tração, as defensas à compressão, e o atrito
+segura a carga estivada no convés. Antes de qualquer conta de estabilidade ou de manobra,
+é preciso saber descrever cada uma dessas forças — e forças são vetores.
+
+## Força como grandeza vetorial {{< ra OE1.1 B2 >}}
+
+Força é a ação capaz de alterar o estado de movimento de um corpo ou de deformá-lo. É uma
+**grandeza vetorial**: fica definida por módulo (em newtons, $1\,\text{N} = 1\,\text{kg·m/s}^2$),
+direção e sentido. Duas forças só se somam pela regra do paralelogramo — nunca pelos módulos:
+
+$$\vec{R} = \vec{F}_1 + \vec{F}_2, \qquad R = \sqrt{F_1^2 + F_2^2 + 2F_1F_2\cos\alpha}$$
+
+onde $\alpha$ é o ângulo entre elas. Se dois cabos de 10 t de tração cada puxam o mesmo
+cabeço com 120° entre si, a resultante vale 10 t — não 20 t.
+
+As forças de trabalho desta UE:
+
+- **Peso** $\vec{P} = m\vec{g}$: aplicado no centro de gravidade, sempre vertical para baixo
+  ($g = 9{,}81\,\text{m/s}^2$).
+- **Tração** $\vec{T}$: força que um cabo, estropo ou corrente exerce ao longo do próprio
+  eixo, sempre "puxando". Um cabo não empurra — é o erro naval clássico.
+- **Compressão**: força axial que "empurra" em estruturas rígidas — escoras, pontaletes,
+  a lança de um guindaste.
+- **Normal** $\vec{N}$: reação de contato perpendicular à superfície de apoio (o convés
+  sobre o contêiner).
+- **Atrito seco** $\vec{f}$: tangente à superfície, opõe-se à tendência de escorregamento.
+  No repouso, $f_s \leq \mu_s N$ (só assume o valor necessário para segurar); em
+  escorregamento, $f_k = \mu_k N$, com $\mu_k < \mu_s$.
+
+::: {.callout-warning}
+**Erro clássico:** escrever $f_s = \mu_s N$ sempre. A igualdade só vale na **iminência**
+de escorregamento. Uma carga peada no convés em mar calmo tem $f_s$ muito menor que
+$\mu_s N$ — o atrito responde à solicitação, não ao máximo disponível.
+:::
+
+## Equilíbrio da partícula {{< ra OE1.2 B3 >}}
+
+{{< aula 3-4 >}}
+
+Uma partícula (corpo cujas dimensões não importam para o problema) está em equilíbrio
+quando a resultante das forças sobre ela é nula:
+
+$$\sum \vec{F} = 0 \quad \Longleftrightarrow \quad \sum F_x = 0, \;\; \sum F_y = 0, \;\; \sum F_z = 0$$
+
+O método é sempre o mesmo: (1) isolar a partícula, (2) desenhar o **diagrama de corpo
+livre** com todas as forças, (3) decompor em eixos convenientes, (4) resolver o sistema.
+
+O caso naval por excelência é a **carga suspensa por dois estropos** simétricos, cada um
+fazendo ângulo $\theta$ com a vertical. No ponto de encontro (o gato do guindaste), agem o
+peso $P$ da carga e as duas trações $T$:
+
+$$\sum F_y = 0: \quad 2T\cos\theta - P = 0 \quad \Rightarrow \quad T = \frac{P}{2\cos\theta}$$
+
+O resultado diz algo que todo oficial de convés precisa saber: **quanto mais aberta a
+lingada, maior a tração em cada estropo**. Para $\theta = 0$ (estropos verticais), cada um
+carrega $P/2$; para $\theta = 60°$, cada um carrega $P$ — a carga inteira; e $\theta \to 90°$
+faria $T \to \infty$, razão pela qual lingadas rasas são proibidas nas tabelas de peação.
+
+<!-- SIMULAÇÃO SUGERIDA: carga suspensa por dois estropos com slider do ângulo de
+     lingada θ, mostrando os vetores de tração e a curva T(θ) = P/(2cosθ) —
+     Plotly (curva explorável) ou Matter.js (vínculo entre corpos, tabela Q4).
+     Parâmetros: carga 20 t, θ de 0° a 75° (faixa SP5). Paridade: matplotlib com a
+     mesma curva no {python}. -->
+
+::: {.sp}
+Um guindaste de bordo iça um contêiner de 20 t usando uma lingada de dois estropos
+idênticos, cada um a 55° da vertical.
+
+**(a) Modelagem:** o gato é tratado como partícula em equilíbrio sob o peso
+$P = 20{\times}10^3 \times 9{,}81 = 196\,\text{kN}$ e duas trações simétricas.
+
+**(b) Desenvolvimento:**
+$$T = \frac{P}{2\cos 55°} = \frac{196}{2 \times 0{,}574} = 171\,\text{kN}$$
+
+**(c) Resultado:** cada estropo suporta $\approx 17{,}4$ t — 74% a mais que os 10 t da
+divisão ingênua do peso.
+
+**(d) Análise crítica:** o fator $1/\cos\theta$ é o "fator de lingada" das tabelas de
+peação. Se o SWL (safe working load) de cada estropo fosse 15 t, a operação estaria
+irregular mesmo com a carga "cabendo" no total — conferir o ângulo é tão importante
+quanto conferir o peso.
+:::

@@ -1,0 +1,98 @@
+---
+title: "1.4 — Estática do corpo rígido"
+categories: [UE1, OE1.5-B3]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 1.5 [B3] Aplicar as condições de equilíbrio de forças e torques ao cálculo da
+            estática de corpos rígidos
+            → naval: Içamento com guindaste/pau de carga: peso transferido ao ponto
+              de suspensão
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 9-10 >}}
+
+A partícula do tópico 1.1 não tem tamanho — mas uma lança de guindaste tem 25 m, e onde
+cada força é aplicada muda tudo. Corpo rígido é o modelo para corpos extensos que não se
+deformam apreciavelmente: para ele, equilíbrio exige duas condições simultâneas, e é a
+segunda que faz a estática render cálculos úteis a bordo.
+
+## As duas condições de equilíbrio {{< ra OE1.5 B3 >}}
+
+Um corpo rígido está em equilíbrio estático quando não translada **e** não gira:
+
+$$\sum \vec{F} = 0 \qquad \text{e} \qquad \sum \vec{\tau}_O = 0 \;\; \text{(para qualquer polo O)}$$
+
+No plano, isso dá três equações escalares: $\sum F_x = 0$, $\sum F_y = 0$,
+$\sum \tau = 0$ — no máximo três incógnitas por corpo. O roteiro é fixo:
+
+1. Isolar o corpo e desenhar o diagrama de corpo livre (todas as forças, nos pontos
+   corretos de aplicação — aqui a posição importa);
+2. Escolher o **polo** para os torques. A escolha é livre (se $\sum\vec F = 0$, o torque
+   resultante é o mesmo em qualquer polo) — então escolha o ponto por onde passam as
+   linhas de ação das forças que você **não** quer calcular: elas somem da equação;
+3. Escrever as três equações e resolver.
+
+::: {.callout-warning}
+**Erro clássico:** somar os torques com forças aplicadas "onde for mais fácil". No corpo
+rígido, transportar uma força para fora da sua linha de ação muda o problema. O peso
+age no centro de gravidade; a tração do estai, no olhal em que está fixada — e cada
+braço se mede do polo à **linha de ação**, perpendicular a ela.
+:::
+
+## O sistema clássico de bordo: lança com tirante
+
+{{< aula 11-12 >}}
+
+Uma lança (pau de carga) de comprimento $L$ é articulada no pé (ponto A), mantida a um
+ângulo $\alpha$ com a horizontal por um **tirante** horizontal fixado no topo (ponto B),
+e sustenta uma carga de peso $P$ suspensa na ponta. Desprezando o peso próprio da lança,
+as forças são: $\vec{P}$ na ponta, a tração $\vec{T}$ (horizontal) no topo, e a reação
+$\vec{R}$ na articulação A.
+
+Tomando torques em A (a reação $\vec R$ some da equação):
+
+$$\sum \tau_A = 0: \quad T \cdot \underbrace{L\sin\alpha}_{\text{braço de }T}
+\;-\; P \cdot \underbrace{L\cos\alpha}_{\text{braço de }P} = 0
+\quad \Rightarrow \quad \boxed{T = \frac{P}{\tan\alpha}}$$
+
+E das equações de força:
+
+$$R_x = T = \frac{P}{\tan\alpha}, \qquad R_y = P
+\quad \Rightarrow \quad R = P\sqrt{1 + \frac{1}{\tan^2\alpha}} = \frac{P}{\sin\alpha}$$
+
+A leitura física: **lança baixa** ($\alpha$ pequeno) → $\tan\alpha$ pequeno → trações
+enormes no tirante e compressão enorme na lança. Arriar a lança para alcançar mais longe
+do costado custa caro em esforço estrutural — é a mesma matemática do ângulo de lingada
+do tópico 1.1, agora com torques.
+
+Note ainda o que diz a âncora IMO deste tópico: no instante em que o guindaste iça a
+carga, **o peso passa a agir no ponto de suspensão** (o topo da lança) — para o navio,
+é como se as $P$ toneladas tivessem sido instantaneamente transferidas do porão para o
+topo do guindaste, com todas as consequências sobre o centro de gravidade que a UE4
+quantifica.
+
+<!-- SIMULAÇÃO SUGERIDA: Plotly (tabela Q4): curvas T(α) = P/tanα e R(α) = P/sinα
+     para α de 15° a 85°, com marcador móvel; deixa visível a explosão das forças
+     em lanças baixas. Parâmetros: P = 15 t, L = 25 m (faixa SP5: cargas 1–50 t,
+     lanças 10–40 m). Paridade matplotlib no {python} com os mesmos parâmetros. -->
+
+::: {.sp}
+Um pau de carga de 25 m, articulado no pé e sustentado por um tirante horizontal no
+topo, opera a 40° com a horizontal içando 15 t na ponta.
+
+**(a) Modelagem:** corpo rígido em equilíbrio; polo em A (articulação) elimina a
+reação; peso da lança desprezado.
+
+**(b) Desenvolvimento:** com $P = 15{\times}10^3 \times 9{,}81 = 147\,\text{kN}$:
+$$T = \frac{P}{\tan 40°} = \frac{147}{0{,}839} = 175\,\text{kN}, \qquad
+R = \frac{P}{\sin 40°} = \frac{147}{0{,}643} = 229\,\text{kN}$$
+
+**(c) Resultado:** tirante a $\approx 17{,}9$ t; articulação suporta $\approx 23{,}3$ t —
+mais que a própria carga içada.
+
+**(d) Análise crítica:** o tirante e o pé da lança "sentem" mais que as 15 t úteis —
+consequência direta dos braços de alavanca. Se a operação exigisse $\alpha = 20°$, a
+tração iria a 40 t e ultrapassaria o SWL típico de um tirante dimensionado para a
+carga nominal. Antes de arriar a lança além do previsto, refaz-se esta conta.
+:::

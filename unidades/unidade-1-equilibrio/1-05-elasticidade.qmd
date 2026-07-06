@@ -1,0 +1,99 @@
+---
+title: "1.5 — Elasticidade: compressão, tração e cisalhamento"
+categories: [UE1, OE1.6-B1]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 1.6 [B1] Conceituar a elasticidade de corpos e as forças de compressão, tração e
+            cisalhamento
+            → naval: Lei de Hooke; tensões de alquebramento (hogging/sagging) no
+              convés e fundo
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 13-14 >}}
+
+Até aqui os corpos eram rígidos por hipótese. Mas o aço do casco estica, o cabo de
+amarração alonga, o pino da manilha pode ser "guilhotinado". Este tópico dá o vocabulário
+mínimo — tensão, deformação, Lei de Hooke — com que a engenharia descreve o quanto um
+corpo real cede antes de falhar.
+
+## Tensão e deformação {{< ra OE1.6 B1 >}}
+
+**Tensão** ($\sigma$) é a resistência interna do material por unidade de área à carga
+externa aplicada:
+
+$$\sigma = \frac{F}{A} \qquad [\text{Pa} = \text{N/m}^2]$$
+
+**Deformação** ($\varepsilon$) é a variação relativa de dimensão produzida pela carga:
+
+$$\varepsilon = \frac{\Delta L}{L_0} \qquad [\text{adimensional}]$$
+
+Os três tipos de carregamento (e onde vivem a bordo):
+
+- **Tração**: a carga tende a alongar o corpo — cabos de amarração e estropos, o
+  **convés** de um navio em contra-alquebramento (*sagging*);
+- **Compressão**: tende a encurtar — escoras e pontaletes, o convés em alquebramento
+  (*hogging*), o fundo em *sagging*;
+- **Cisalhamento**: as forças tendem a fazer uma seção deslizar sobre a adjacente —
+  pinos de manilha, parafusos de flange, a seção do casco onde a curva de peso cruza a
+  de empuxo (força cortante do tópico 1.3).
+
+## Lei de Hooke e módulo de elasticidade
+
+Carregando um corpo de aço gradualmente e medindo $\sigma$ e $\varepsilon$, observa-se
+que, **dentro do limite elástico**, tensão e deformação são proporcionais — a Lei de
+Hooke:
+
+$$\frac{\sigma}{\varepsilon} = E \;\; (\text{constante})$$
+
+A constante $E$ é o **módulo de elasticidade** (módulo de Young) do material — a
+"rigidez" intrínseca: aço $E \approx 200$ GPa; alumínio $\approx 70$ GPa; náilon
+$\approx 3$ GPa. Combinando as definições, o alongamento de uma peça sob tração é
+
+$$\Delta L = \frac{F L_0}{E A}$$
+
+No gráfico tensão × deformação de um aço, os pontos notáveis definidos pela fonte IMO
+(7.04 §3.1.3.3.1) são, em ordem crescente de carga:
+
+1. **Limite elástico** — até aqui, descarregou, voltou ao tamanho original (vale Hooke);
+2. **Ponto de escoamento** — o material passa a deformar permanentemente;
+3. **Resistência última** — máxima tensão suportada;
+4. **Tensão de ruptura** — onde o corpo de prova parte.
+
+A distância entre o regime de trabalho e esses limites é o **fator de segurança** — o
+SWL de um cabo é tipicamente 1/5 a 1/6 da sua carga de ruptura.
+
+::: {.callout-warning}
+**Erro clássico:** confundir a rigidez ($E$, inclinação da reta de Hooke) com a
+resistência (tensão de ruptura). Náilon e aço podem amarrar o mesmo navio — mas o
+náilon alonga ~10× mais para a mesma tensão, e é exatamente essa elasticidade que
+absorve o "tranco" da onda. Cabo de aço tenso que parte não avisa: armazena menos
+deformação e libera a energia de uma vez (efeito chicote, zona de *snap-back*).
+:::
+
+<!-- SIMULAÇÃO SUGERIDA: Plotly (tabela Q4): gráfico σ×ε interativo com as regiões
+     (elástica / escoamento / última / ruptura) demarcadas e hover; comparação
+     aço × náilon na mesma escala. Parâmetros do exemplo numérico da SP (faixa SP6).
+     Paridade matplotlib no {python}. -->
+
+::: {.sp}
+Um cabo de aço de amarração ($E = 200$ GPa) tem 40 mm de diâmetro, 45 m de comprimento
+entre o cabeço e a buzina, e trabalha com tração de 30 t.
+
+**(a) Modelagem:** tração axial uniforme; seção $A = \pi d^2/4$; regime elástico
+(verificar ao final).
+
+**(b) Desenvolvimento:** $F = 30{\times}10^3 \times 9{,}81 = 294\,\text{kN}$;
+$A = \pi (0{,}040)^2/4 = 1{,}26{\times}10^{-3}\,\text{m}^2$:
+$$\sigma = \frac{F}{A} = \frac{294{\times}10^3}{1{,}26{\times}10^{-3}} = 234\,\text{MPa}
+\qquad
+\Delta L = \frac{F L_0}{E A} = \frac{294{\times}10^3 \times 45}{200{\times}10^9 \times 1{,}26{\times}10^{-3}} = 5{,}3\,\text{cm}$$
+
+**(c) Resultado:** tensão de 234 MPa e alongamento de ≈ 5 cm.
+
+**(d) Análise crítica:** 234 MPa está abaixo do escoamento de um aço de cabo
+(≳ 1200 MPa de ruptura), coerente com um fator de segurança ≳ 5. Os 5 cm de
+alongamento parecem pouco — mas são energia elástica armazenada; se o cabo partir,
+ela é liberada no chicote. As zonas de *snap-back* pintadas no convés existem por
+causa desta conta.
+:::

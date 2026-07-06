@@ -1,0 +1,88 @@
+---
+title: "1.2 — Torque"
+categories: [UE1, OE1.3-B2]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 1.3 [B2] Definir o torque e estabelecer seu significado físico na condição de
+            equilíbrio de um corpo rígido
+            → naval: Momento de banda (list) e sua correção; binário peso–empuxo
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 5-6 >}}
+
+Forças iguais podem ter efeitos completamente diferentes: empurrar uma porta perto da
+maçaneta é fácil; perto da dobradiça, quase impossível. O que muda não é a força, é o
+**torque** — e é o torque, não a força, que governa a inclinação de um navio quando um
+peso é movido no convés.
+
+## Definição de torque {{< ra OE1.3 B2 >}}
+
+O torque (ou momento) de uma força $\vec{F}$ em relação a um ponto O é o produto vetorial
+
+$$\vec{\tau} = \vec{r} \times \vec{F}$$
+
+onde $\vec{r}$ é o vetor que vai de O ao ponto de aplicação da força. Seu módulo é
+
+$$\tau = rF\sin\varphi = F \cdot d$$
+
+com $\varphi$ o ângulo entre $\vec{r}$ e $\vec{F}$, e $d = r\sin\varphi$ o **braço de
+alavanca** — a distância perpendicular de O à linha de ação da força. Unidade SI:
+$\text{N·m}$.
+
+Duas leituras práticas da fórmula:
+
+- Só a componente de $\vec{F}$ **perpendicular** a $\vec{r}$ produz torque; a componente
+  ao longo de $\vec{r}$ é desperdiçada.
+- Deslocar a força ao longo da própria linha de ação não muda o torque — o que importa
+  é a linha de ação, não o ponto exato de aplicação.
+
+## O binário (conjugado)
+
+Um **binário** é um par de forças de mesmo módulo, sentidos opostos e linhas de ação
+paralelas separadas por uma distância $d$. A resultante é nula — o binário não translada
+o corpo — mas o torque não é:
+
+$$\tau_{\text{binário}} = F \cdot d \qquad \text{(independente do polo escolhido)}$$
+
+É exatamente o que acontece com um navio adernado: o peso $\vec{P}$ age no centro de
+gravidade G e o empuxo $\vec{E} = -\vec{P}$ age no centro de carena B. Quando o navio
+está aprumado, as duas linhas de ação coincidem e o torque é nulo; inclinado, elas se
+separam e o binário peso–empuxo tende a restaurar (ou a emborcar) o navio. Toda a teoria
+de estabilidade transversal que vem em FIS-2 e nas disciplinas profissionais é a física
+deste binário.
+
+## Torque e equilíbrio: o momento de banda
+
+Mover um peso $m$ transversalmente por uma distância $d$ no convés cria um **momento de
+banda** (momento inclinante):
+
+$$\tau_{\text{banda}} = m\,g\,d$$
+
+O navio aderna até que o binário restaurador peso–empuxo equilibre esse momento. A
+condição $\sum \vec{\tau} = 0$ — que o próximo tópico junta a $\sum \vec{F} = 0$ para
+fechar a estática do corpo rígido — é o que define o novo ângulo de equilíbrio.
+
+<!-- SIMULAÇÃO SUGERIDA: barra pivotada com slider de posição e ângulo da força
+     aplicada, mostrando braço de alavanca d e o valor de τ em tempo real —
+     p5.js (conceito visual-geométrico, tabela Q4). Alternativa: Plotly com curva
+     τ(φ) = rF sinφ. Parâmetros: F até 500 kN, r até 20 m (ordem de SP2). -->
+
+::: {.sp}
+Durante a faina de carga, um lote de 80 t é deslocado 12 m transversalmente no convés
+de um navio.
+
+**(a) Modelagem:** o deslocamento do peso gera um momento de banda
+$\tau = m\,g\,d$ em relação ao plano diametral.
+
+**(b) Desenvolvimento:**
+$$\tau = 80{\times}10^3 \times 9{,}81 \times 12 = 9{,}4{\times}10^6\,\text{N·m} \approx 9{,}4\,\text{MN·m}$$
+
+**(c) Resultado:** momento de banda de $\approx 9{,}4$ MN·m (na prática de bordo,
+expresso como $80 \times 12 = 960$ t·m).
+
+**(d) Análise crítica:** o valor é o mesmo se o lote for movido em uma ou em dez
+etapas — o torque depende só de $m$ e $d$ totais. Para corrigir a banda, transfere-se
+lastro no bordo oposto de modo a gerar momento igual e contrário: é literalmente uma
+equação $\sum \tau = 0$ resolvida com bombas de lastro.
+:::
