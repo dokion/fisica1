@@ -1,0 +1,57 @@
+---
+title: "5.1 — Rotação na forma vetorial"
+categories: [UE5, OE5.1-B2]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 5.1 [B2] Descrever a rotação de um corpo rígido com grandezas vetoriais
+            → naval: Rotação da linha de eixo e do hélice: vetor velocidade angular
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 59-60 >}}
+
+A linha de eixo de um navio gira a 84 rpm — mas 84 rpm **em torno de quê, e para que
+lado?** Para operar máquinas rotativas (e para entender o girocompasso adiante), a
+rotação precisa do mesmo tratamento que a translação recebeu: grandezas com direção e
+sentido. Este tópico monta esse vocabulário.
+
+## As grandezas angulares como vetores {{< ra OE5.1 B2 >}}
+
+Um corpo rígido girando em torno de um eixo fixo tem cada ponto descrevendo uma
+circunferência; o que é comum a todos os pontos é o **ângulo** varrido. Definem-se:
+
+- **Posição angular** $\theta$ (em radianos: $\theta = s/r$, arco sobre raio);
+- **Velocidade angular** $\omega = \dfrac{d\theta}{dt}$ [rad/s];
+- **Aceleração angular** $\alpha = \dfrac{d\omega}{dt}$ [rad/s²].
+
+É a cinemática do tópico 2.1 reescrita: as fórmulas do MRUV valem trocando
+$x \to \theta$, $v \to \omega$, $a \to \alpha$ (ex.:
+$\omega^2 = \omega_0^2 + 2\alpha\,\Delta\theta$).
+
+A rotação, porém, tem **eixo e sentido** — e por isso $\vec\omega$ é um **vetor**:
+módulo $\omega$, direção **ao longo do eixo de rotação**, sentido dado pela regra da
+mão direita (tópico 5.3). $\vec\alpha$ segue $d\vec\omega/dt$: paralelo a $\vec\omega$
+quando a máquina acelera, antiparalelo quando desacelera.
+
+Conversão de uso diário na praça de máquinas:
+
+$$\omega\,[\text{rad/s}] = \frac{2\pi \times \text{rpm}}{60}
+\qquad \text{ex.: } 84\,\text{rpm} \to \omega = 8{,}80\,\text{rad/s}$$
+
+Para a linha de eixo de um navio: $\vec\omega$ aponta ao longo do eixo
+(longitudinal); num hélice de **passo direito** em marcha avante, visto de ré, o giro
+é horário. Quando o motor reverte, $\vec\omega$ **troca de sentido** — mesmo eixo,
+vetor oposto. Descrever "girando a tantos rad/s em torno de tal eixo, em tal sentido"
+é o que permitirá, nos tópicos 5.8–5.10, somar rotações, calcular momento angular e
+prever o comportamento do giroscópio.
+
+::: {.callout-warning}
+**Erro clássico:** usar rpm nas fórmulas. As equações da rotação pressupõem
+**radianos**: rpm é unidade de painel, rad/s é unidade de física. Esquecer o fator
+$2\pi/60$ erra tudo por ~10×.
+:::
+
+<!-- SIMULAÇÃO SUGERIDA: p5.js (tabela Q4 — movimento contínuo): hélice/eixo 3D
+     simplificado (ou vista dupla proa/través) com vetor ω desenhado sobre o eixo,
+     slider de rpm (0–120, com reversão) mostrando ω em rad/s e a inversão do vetor.
+     Paridade matplotlib no {python}: diagrama do vetor ω nos dois sentidos. -->

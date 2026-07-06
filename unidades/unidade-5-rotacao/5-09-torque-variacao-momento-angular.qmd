@@ -1,0 +1,68 @@
+---
+title: "5.9 — Torque como taxa de variação do momento angular"
+categories: [UE5, OE5.9-B2]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 5.9 [B2] Descrever o torque como taxa de variação do momento angular
+            → naval: Precessão do giroscópio: taxa proporcional ao torque aplicado
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 73-74 >}}
+
+Empurre o eixo de um giroscópio em rotação e ele foge — **para o lado**, não para onde
+você empurrou. O comportamento parece desafiar a intuição, mas é a consequência direta
+da forma mais geral da lei de rotação, e é o mecanismo que o girocompasso usa para
+encontrar o norte.
+
+## A lei geral {{< ra OE5.9 B2 >}}
+
+Derivando $\vec L = \vec r \times \vec p$ no tempo (a parcela
+$\vec v \times m\vec v$ é nula):
+
+$$\boxed{\sum\vec{\tau} = \frac{d\vec{L}}{dt}}$$
+
+— a 2ª lei de Newton na sua forma rotacional geral. A versão $\sum\tau = I\alpha$ do
+tópico 5.7 é o caso particular em que o **eixo não muda de direção** (só o módulo de
+$\omega$ varia). A novidade está no caso oposto: torque **perpendicular** a $\vec L$.
+
+## Precessão: o torque que não acelera, desvia
+
+Como $d\vec L = \vec\tau\,dt$, o momento angular muda **na direção do torque**. Se
+$\vec\tau \perp \vec L$, o módulo de $L$ não muda — só a direção: a ponta do vetor
+$\vec L$ descreve um círculo. É a **precessão**: o eixo gira em torno de uma direção
+fixa em vez de tombar.
+
+A taxa sai da geometria ($|d\vec L| = L\,d\phi$ para um giro $d\phi$ do eixo):
+
+$$\Omega_p = \frac{d\phi}{dt} = \frac{\tau}{L} = \frac{\tau}{I\omega}$$
+
+As três leituras — todas literais do 7.03 §1.1.5.3:
+
+- "a taxa de precessão é **proporcional ao torque aplicado**" ($\Omega_p \propto \tau$
+  — inclusive os torques indesejados: "o atrito nos mancais da suspensão produz
+  torques que dão origem a precessão", o erro de deriva do instrumento);
+- $\Omega_p \propto 1/(I\omega)$: rotor rápido e "pesado na borda" precessa devagar —
+  mais um motivo para $I\omega$ gigante no girocompasso;
+- a precessão resulta "de um torque em torno de eixo **perpendicular** ao eixo de
+  rotação" — empurrão e resposta ficam a 90°, a assinatura giroscópica.
+
+**A regra prática** (equivalente vetorial): o eixo do rotor persegue o vetor torque —
+$\vec L$ corre para se alinhar com $\vec\tau$ pelo caminho mais curto. Com ela se prevê,
+sem conta nenhuma, para onde foge o giroscópio de demonstração do laboratório — e se
+entende o esforço giroscópico que um hélice pesado impõe aos mancais quando o navio
+caturra (o mar muda a direção de $\vec L$ do hélice; o torque necessário aparece nos
+mancais).
+
+<!-- SIMULAÇÃO SUGERIDA: p5.js (tabela Q4 — movimento, isométrico com fallback Q5.3):
+     giroscópio com rotor ajustável (ω) e peso aplicável na ponta do eixo (τ);
+     mostrar os vetores L, τ e dL, e a precessão resultante com Ω_p calculado —
+     alternar rotor parado (tomba) × girando (precessa). Paridade matplotlib no
+     {python}: diagrama vetorial L, τ, dL. -->
+
+::: {.callout-warning}
+**Erro clássico:** esperar que o giroscópio "caia" na direção do empurrão. Com o rotor
+parado, cai; girando, a mesma força produz movimento **perpendicular** — quem cai é a
+intuição translacional. O teste mental correto é sempre: para onde aponta $\vec\tau$?
+É para lá que $\vec L$ se move.
+:::

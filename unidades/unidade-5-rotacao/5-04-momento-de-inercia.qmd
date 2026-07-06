@@ -1,0 +1,85 @@
+---
+title: "5.4 — Momento de inércia"
+categories: [UE5, OE5.4-B3]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 5.4 [B3] Conceituar e calcular o momento de Inércia de sistemas de partículas e
+            corpos rígidos
+            → naval: Inércia giroscópica do rotor do girocompasso; volante do MCP
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 63-64 >}}
+
+Na translação, a resistência à mudança de movimento é a massa. Na rotação, massa não
+basta: importa **onde** ela está. Um volante de motor e um eixo nu podem pesar o
+mesmo — mas o volante, com a massa na borda, resiste muito mais a variar a rotação. A
+grandeza que captura isso é o momento de inércia, e é dela que o girocompasso tira sua
+teimosia.
+
+## Definição e cálculo {{< ra OE5.4 B3 >}}
+
+Para um sistema de partículas girando em torno de um eixo, com cada massa $m_i$ a
+distância $r_i$ **do eixo**:
+
+$$I = \sum_i m_i\,r_i^2 \qquad [\text{kg·m}^2]
+\qquad\text{(contínuo: } I = \int r^2\,dm\text{)}$$
+
+O quadrado é a alma da fórmula: massa afastada do eixo conta **muito** mais. Dobrar a
+distância quadruplica a contribuição — por isso a geometria decide.
+
+Casos de prateleira (massa $M$, raio $R$, eixo pelo centro):
+
+| Corpo | $I$ |
+|---|---|
+| Anel fino / cilindro oco (massa na borda) | $MR^2$ |
+| Disco / cilindro maciço | $\tfrac{1}{2}MR^2$ |
+| Esfera maciça | $\tfrac{2}{5}MR^2$ |
+| Barra fina, comprimento $L$, eixo pelo meio | $\tfrac{1}{12}ML^2$ |
+
+**Exemplo de dedução** (disco maciço, densidade superficial
+$\sigma = M/\pi R^2$), fatiando em anéis de raio $r$ e largura $dr$
+($dm = \sigma\,2\pi r\,dr$):
+
+$$I = \int_0^R r^2\,\sigma\,2\pi r\,dr = 2\pi\sigma\int_0^R r^3 dr
+= 2\pi\,\frac{M}{\pi R^2}\,\frac{R^4}{4} = \tfrac{1}{2}MR^2$$
+
+Ao contrário da massa, $I$ **depende do eixo escolhido** — o mesmo corpo tem um $I$
+para cada eixo (o tópico 5.5 dá o atalho para trocar de eixo).
+
+## Onde ele mora a bordo
+
+- **Volante do MCP:** um anel pesado ($I$ grande de propósito) solidário ao eixo de
+  manivelas. Cada cilindro empurra em pulsos; o volante, resistindo a variar
+  $\omega$, alisa a rotação entre pulsos — é um amortecedor de flutuações feito de
+  pura geometria.
+- **Rotor do girocompasso:** massa concentrada na periferia, girando a milhares de
+  rpm — $I$ e $\omega$ grandes constroem a "inércia giroscópica" (7.03 §1.1.5.3) que
+  os tópicos 5.8–5.10 transformam em instrumento de rumo.
+- **O próprio navio:** tem momento de inércia em torno de cada eixo (o de roll, o de
+  guinada). Carga estivada longe do plano diametral aumenta o $I$ de balanço — navio
+  "mais manso", período maior, história que FIS-2 conta completa.
+
+<!-- SIMULAÇÃO SUGERIDA: Plotly (tabela Q4): mesmo M distribuído como anel × disco ×
+     esfera, com I calculado e resposta ω(t) a um mesmo torque aplicado (integração
+     simples) — visualiza "geometria decide". Parâmetros: M = 40 t, R = 1,5 m
+     (ordem de volante de motor lento). Paridade matplotlib no {python}. -->
+
+::: {.sp}
+O volante de um MCP é aproximadamente um anel de aço de 38 t com raio médio de 1,5 m,
+girando a 84 rpm.
+
+**(a) Modelagem:** anel fino → $I = MR^2$; $\omega = 8{,}80$ rad/s (5.1).
+
+**(b) Desenvolvimento:**
+$$I = 38{\times}10^3 \times (1{,}5)^2 = 8{,}55{\times}10^4\,\text{kg·m}^2$$
+
+**(c) Resultado:** $I \approx 8{,}6{\times}10^4$ kg·m² — o mesmo aço fundido como
+disco maciço ($\tfrac12 MR^2$) daria metade da inércia: a borda vale dobrado.
+
+**(d) Análise crítica:** entre dois pulsos de cilindro o torque flutua, mas
+$\Delta\omega = (\tau\,\Delta t)/I$ — com $I$ desta ordem, a flutuação de rotação
+fica em frações de rpm, que é o objetivo do volante. O custo aparece na manobra: um
+$I$ grande também **demora** a acelerar e a reverter (5.7), e a partida engraxa essa
+conta com ar comprimido justamente para vencer $I\,\alpha$.
+:::

@@ -1,0 +1,61 @@
+---
+title: "5.2 — Relação entre grandezas lineares e angulares"
+categories: [UE5, OE5.2-B2]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 5.2 [B2] Relacionar grandezas lineares e angulares
+            → naval: Velocidade periférica da pá × rpm do eixo; passo do hélice
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 61-62 >}}
+
+O eixo gira a 84 rpm — mas a ponta da pá do hélice, a 3 m do centro, viaja a quantos
+m/s através da água? A pergunta importa (cavitação, tensões na pá, velocidade
+periférica em mancais) e a resposta é um dicionário de três linhas entre o mundo
+angular e o linear.
+
+## O dicionário {{< ra OE5.2 B2 >}}
+
+Para um ponto a distância $r$ do eixo de rotação, o arco percorrido é $s = \theta r$.
+Derivando em cadeia:
+
+$$s = \theta\,r \qquad\Rightarrow\qquad v = \omega\,r \qquad\Rightarrow\qquad a_t = \alpha\,r$$
+
+E, do tópico 2.4, todo ponto em trajetória circular tem ainda a componente centrípeta:
+
+$$a_c = \frac{v^2}{r} = \omega^2 r$$
+
+As leituras práticas:
+
+- **Mesmo $\omega$, $v$ proporcional ao raio:** todos os pontos do eixo giram juntos,
+  mas a raiz da pá anda devagar e a ponta, depressa. A 84 rpm
+  ($\omega = 8{,}80$ rad/s), a ponta de um hélice de 6 m de diâmetro faz
+  $v = 8{,}80 \times 3{,}0 = 26{,}4$ m/s (≈ 51 nós!) — enquanto o navio avança a 14.
+  É essa velocidade da seção da pá que governa a pressão local na água e o risco de
+  **cavitação** (FIS-2 fecha essa história com Bernoulli).
+- **$a_c = \omega^2 r$ cresce rápido:** na mesma ponta,
+  $a_c = 8{,}80^2 \times 3{,}0 = 232$ m/s² ≈ **24 g** — a pá precisa de tração
+  estrutural só para não se desprender de si mesma; dobrar a rotação quadruplica isso.
+- **Velocidade periférica em mancais:** $v = \omega r$ no munhão foi exatamente o que
+  usamos na dissipação do tópico 3.6.
+
+## O passo do hélice
+
+O **passo** $P$ (7.04 §1.4.1.5) é o avanço teórico do hélice em **uma volta**, como um
+parafuso na madeira: a relação linear–angular na direção **axial**. Em $n$ voltas por
+segundo, o avanço teórico é $v_{\text{teo}} = n\,P$; o navio anda menos que isso, e a
+diferença relativa é o **escorregamento** (*slip*):
+
+$$\text{slip} = \frac{nP - v_{\text{navio}}}{nP}$$
+
+Ex.: hélice de passo 5,0 m a 84 rpm ($n = 1{,}40$ voltas/s):
+$v_{\text{teo}} = 7{,}0$ m/s (13,6 nós). Navio a 12 nós → slip ≈ 12%. Como o tópico
+4.3 mostrou, slip positivo não é perda a eliminar: sem empurrar água para ré mais
+rápido do que avança, não há empuxo.
+
+<!-- SIMULAÇÃO SUGERIDA: p5.js (tabela Q4 — movimento): hélice em rotação com pontos
+     marcados na raiz e na ponta da pá deixando rastro (mesmo ω, raios diferentes);
+     mostradores de v = ωr e a_c = ω²r por ponto; segundo modo: parafuso avançando
+     P por volta com slider de slip. Parâmetros: D = 6 m, rpm 0–120, P = 5 m.
+     Paridade matplotlib no {python}: v(r) e a_c(r) para o rpm escolhido. -->

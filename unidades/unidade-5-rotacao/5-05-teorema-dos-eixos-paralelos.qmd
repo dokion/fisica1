@@ -1,0 +1,83 @@
+---
+title: "5.5 — Teorema dos eixos paralelos"
+categories: [UE5, OE5.5-B3]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 5.5 [B3] Estabelecer e aplicar o Teorema dos Eixos Paralelos
+            → naval: —
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 65-66 >}}
+
+A tabela do tópico 5.4 dá o momento de inércia pelo **centro de massa** — mas corpos
+reais raramente giram por ali: a porta do paiol gira pela dobradiça, a lança pelo pé, o
+navio guina em torno de um ponto (o *pivot point*) bem a vante do G. O teorema deste
+tópico converte a tabela de eixo em eixo com uma soma só.
+
+## Enunciado e dedução {{< ra OE5.5 B3 >}}
+
+Se $I_{\text{CM}}$ é o momento de inércia em torno de um eixo que passa pelo centro de
+massa, o momento de inércia em torno de **qualquer eixo paralelo**, a distância $d$, é
+
+$$\boxed{I = I_{\text{CM}} + M\,d^2}$$
+
+**Dedução.** Coordenadas no plano perpendicular ao eixo, origem no CM, novo eixo
+furando o plano em $(d, 0)$. A distância² de uma massa $m_i$ ao novo eixo é
+$(x_i - d)^2 + y_i^2$:
+
+$$I = \sum m_i\left[(x_i - d)^2 + y_i^2\right]
+= \underbrace{\sum m_i (x_i^2 + y_i^2)}_{I_{\text{CM}}}
+\;-\; 2d\underbrace{\sum m_i x_i}_{=\,0\ \text{(def. de CM)}}
+\;+\; d^2\underbrace{\sum m_i}_{M}$$
+
+O termo cruzado morre **porque a origem é o CM** — é aí que a definição do tópico 4.1
+paga o teorema. Restam $I = I_{\text{CM}} + Md^2$. ∎
+
+Duas consequências de leitura imediata:
+
+- $I_{\text{CM}}$ é o **mínimo** entre todos os eixos paralelos: girar um corpo "por
+  fora" do CM custa sempre mais;
+- o acréscimo $Md^2$ trata o corpo como partícula na distância $d$ — a receita para
+  corpos compostos: cada peça entra com $I_{\text{CM,peça}} + m_{\text{peça}}d_{\text{peça}}^2$.
+
+**Exemplo resolvido — barra pela extremidade** (comprimento $L$, o modelo de uma lança
+girando pelo pé, tópico 1.4):
+
+$$I_{\text{ext}} = \frac{1}{12}ML^2 + M\left(\frac{L}{2}\right)^2
+= \frac{1}{12}ML^2 + \frac{1}{4}ML^2 = \frac{1}{3}ML^2$$
+
+— quatro vezes o valor pelo centro. O guincho que ondula a lança "sente" esse fator 4.
+
+::: {.callout-warning}
+**Erro clássico:** usar o teorema entre dois eixos quaisquer. Ele vale **do CM para
+fora** — para ir de um eixo excêntrico A a outro B, passa-se **por dentro**:
+$I_B = (I_A - Md_A^2) + Md_B^2$. Somar $Md^2$ direto de A para B conta a excentricidade
+duas vezes.
+:::
+
+<!-- SIMULAÇÃO SUGERIDA: Plotly (tabela Q4): barra/retângulo com eixo de rotação
+     arrastável ao longo do corpo, curva I(d) = I_CM + Md² desenhada em tempo real
+     com o mínimo marcado no CM. Parâmetros: lança M = 8 t, L = 25 m (faixa SP5).
+     Paridade matplotlib no {python}: I(d) com os pontos "centro" e "extremidade". -->
+
+::: {.sp}
+A lança do tópico 1.4 — 8 t, 25 m, tratada como barra homogênea — é ondulada
+girando em torno do pé.
+
+**(a) Modelagem:** barra fina; eixo pela extremidade → teorema dos eixos paralelos
+com $d = L/2$.
+
+**(b) Desenvolvimento:**
+$$I_{\text{pé}} = \frac{1}{3}ML^2 = \frac{1}{3} \times 8000 \times 25^2
+= 1{,}67{\times}10^6\,\text{kg·m}^2$$
+
+**(c) Resultado:** ≈ 1,7×10⁶ kg·m² — contra 4,2×10⁵ kg·m² se girasse pelo próprio
+centro.
+
+**(d) Análise crítica:** o fator 4 entre os dois eixos é puro $Md^2$ — nenhuma massa
+mudou, só a geometria do giro. É o mesmo motivo pelo qual o navio, guinando em torno
+do *pivot point* (bem a vante do G), apresenta ao leme um momento de inércia efetivo
+muito maior que o "de tabela" em torno do G: a física do teorema, em escala de
+100 000 t.
+:::

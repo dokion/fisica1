@@ -1,0 +1,64 @@
+---
+title: "5.8 — Momento angular"
+categories: [UE5, OE5.8-B1]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 5.8 [B1] Estabelecer o momento angular
+            → naval: Rigidez no espaço do eixo do giroscópio livre
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 71-72 >}}
+
+Falta uma peça no dicionário translação↔rotação: o análogo do momento linear
+$\vec p = m\vec v$. Essa peça — o momento angular — é a mais importante das três
+últimas aulas, porque é dela que o girocompasso extrai o norte: um rotor com momento
+angular grande simplesmente **se recusa a mudar de direção**.
+
+## Definição {{< ra OE5.8 B1 >}}
+
+Para uma partícula, o momento angular em relação a um ponto O é
+
+$$\vec{L} = \vec{r} \times \vec{p} = \vec{r} \times m\vec{v}
+\qquad [\text{kg·m}^2/\text{s}]$$
+
+— o "torque do momento linear": mesmo produto vetorial do tópico 1.2, com
+$\vec F \to \vec p$, direção dada pela regra da mão direita (5.3), módulo
+$L = r\,p\sin\varphi$.
+
+Para um **corpo rígido girando em torno de um eixo de simetria**, somar
+$\vec r_i \times m_i\vec v_i$ sobre todas as partículas colapsa numa expressão à
+altura do dicionário:
+
+$$\boxed{\vec{L} = I\,\vec{\omega}}$$
+
+— paralelo a $\vec\omega$, ao longo do eixo de rotação. As correspondências fecham:
+
+| Translação | Rotação |
+|---|---|
+| $m$ | $I$ |
+| $\vec v$ | $\vec\omega$ |
+| $\vec p = m\vec v$ | $\vec L = I\vec\omega$ |
+| $\sum\vec F = d\vec p/dt$ | $\sum\vec\tau = d\vec L/dt$ (tópico 5.9) |
+
+## Rigidez no espaço
+
+O momento angular é um **vetor com endereço**: módulo $I\omega$ **e** direção fixa no
+espaço enquanto nada o perturbar (é o conteúdo do próximo tópico). Um rotor de
+girocompasso — $I$ concentrado na borda (5.4), $\omega$ de milhares de rpm — carrega
+um $\vec L$ tão grande que os pequenos torques residuais dos mancais quase não o
+movem: o eixo "aponta teimosamente para o mesmo lugar do universo" enquanto o navio
+guina, joga e caturra ao redor.
+
+É a **rigidez no espaço** (*gyroscopic inertia*) do 7.03 §1.1.5.3: "na ausência de
+forças perturbadoras, o eixo de rotação de um giroscópio livre mantém sua direção no
+espaço". Não é mágica nem magnetismo — é $\vec L = I\vec\omega$ sem torque que o mude.
+O giroscópio **livre**, porém, aponta para um ponto fixo *das estrelas*, não para o
+norte da Terra que gira: transformá-lo em girocompasso exige usar a precessão (5.9) a
+favor — o arremate fica para o tópico 5.10.
+
+<!-- SIMULAÇÃO SUGERIDA: p5.js (tabela Q4 — movimento 3D-isométrico, fallback Q5.3):
+     rotor suspenso em suspensão cardan dentro de um "navio" que guina e joga; o
+     vetor L permanece fixo no espaço enquanto a moldura se move ao redor.
+     Alternar L pequeno/grande (rotor lento/rápido) para ver a perturbação relativa.
+     Paridade matplotlib no {python}: diagrama vetorial rotor + L. -->

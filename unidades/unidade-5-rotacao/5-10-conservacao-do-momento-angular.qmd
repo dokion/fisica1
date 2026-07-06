@@ -1,0 +1,84 @@
+---
+title: "5.10 — Conservação do momento angular"
+categories: [UE5, OE5.10-B3]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 5.10 [B3] Conceituar e aplicar a conservação do momento angular a problemas
+             relevantes
+             → naval: Girocompasso: o eixo de rotação mantém sua direção no espaço
+               na ausência de torques
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 75-76 >}}
+
+A última lei de conservação do curso fecha o ciclo: momento linear se conserva sem
+força externa (4.3); energia se conserva sempre, mudando de forma (3.5); e o momento
+angular se conserva **sem torque externo** — a lei que faz a patinadora acelerar ao
+encolher os braços e o girocompasso apontar o norte em qualquer tempo e latitude.
+
+## A lei {{< ra OE5.10 B3 >}}
+
+Do tópico 5.9, se $\sum\vec\tau_{\text{ext}} = 0$:
+
+$$\frac{d\vec{L}}{dt} = 0
+\qquad\Longrightarrow\qquad
+\boxed{\vec{L}_1 = \vec{L}_2}$$
+
+Conservação **vetorial**: módulo *e* direção. Cada metade tem consequências próprias:
+
+**Módulo — trocando $I$ por $\omega$.** Se o corpo redistribui a própria massa
+(torques internos não contam), $I_1\omega_1 = I_2\omega_2$: encolher o raio de giro
+acelera a rotação. A patinadora é o exemplo canônico; a versão de bordo é o guindaste
+giratório que recolhe a lança com carga suspensa — o conjunto acelera o giro
+espontaneamente ($I$ caiu), e o operador precisa compensar no freio.
+
+**Direção — a rigidez no espaço, agora como teorema.** Sem torque externo, o eixo do
+rotor mantém a direção **em relação às estrelas**. É a metade que o girocompasso
+explora — mas com uma sutileza que o Model Course cobra: um giroscópio **livre**
+perfeito não serve de compasso, porque a Terra gira sob ele (para um observador de
+bordo, o eixo parece derivar 15°/h). O girocompasso é o giroscópio **deliberadamente
+perturbado**: um sistema pendular/de mercúrio cria um pequeno torque gravitacional
+sempre que o eixo sai do plano horizontal, e a precessão resultante (5.9) empurra o
+eixo — pelo caminho dos 90° — até a única direção em que ele descansa: **o meridiano,
+apontando o norte verdadeiro**. Conservação quando não há torque; precessão controlada
+quando há: o instrumento é a UE5 inteira em uma bitácula.
+
+::: {.callout-warning}
+**Erro clássico:** aplicar $I_1\omega_1 = I_2\omega_2$ com torque externo atuando
+(freio ligado, motor engrenado). A conservação exige $\sum\tau_{\text{ext}} = 0$ — no
+guindaste real, o freio de giro é justamente o torque externo que impede a aceleração;
+a lei prevê a **tendência** que o freio combate.
+:::
+
+<!-- SIMULAÇÃO SUGERIDA: p5.js (tabela Q4 — movimento, SP5): vista superior de
+     guindaste giratório com carga; botão "recolher lança" reduz I e o giro acelera
+     mantendo L = Iω constante (mostradores de I, ω e L); segundo modo: eixo de
+     giroscópio mantendo direção enquanto a "Terra" gira embaixo (deriva aparente de
+     15°/h). Paridade matplotlib no {python}: ω(I) com L constante. -->
+
+::: {.sp}
+Um guindaste de bordo gira a 2,0 rpm com a lança estendida e uma carga de 10 t na
+ponta; o momento de inércia total do conjunto em torno do eixo de giro é
+$5{,}0{\times}10^6$ kg·m². Recolhendo a lança, a carga passa de 30 m para 18 m do
+eixo, e o $I$ total cai para $2{,}6{\times}10^6$ kg·m². Freio de giro desligado.
+
+**(a) Modelagem:** torque externo ≈ 0 durante o recolhimento →
+$I_1\omega_1 = I_2\omega_2$.
+
+**(b) Desenvolvimento:**
+$$\omega_2 = \omega_1\frac{I_1}{I_2}
+= 2{,}0 \times \frac{5{,}0}{2{,}6} = 3{,}8\,\text{rpm}$$
+
+A energia de rotação **subiu** ($K = \tfrac12 I\omega^2$:
+$K_2/K_1 = I_1/I_2 = 1{,}9$) — quem pagou foi o guincho, trabalhando contra a
+"centrífuga" ao puxar a carga para dentro.
+
+**(c) Resultado:** o giro quase dobra sozinho, de 2,0 para 3,8 rpm.
+
+**(d) Análise crítica:** para o operador, a plataforma "dispara" sem ninguém tocar no
+comando de giro — previsto por conservação, corrigido pelo freio (torque externo que
+quebra a hipótese da lei). O mesmo $L$ constante em direção é o que mantém o rotor do
+girocompasso servindo de referência: duas faces — módulo e direção — da última lei de
+conservação da mecânica.
+:::

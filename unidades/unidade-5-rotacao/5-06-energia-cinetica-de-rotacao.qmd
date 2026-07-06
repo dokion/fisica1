@@ -1,0 +1,76 @@
+---
+title: "5.6 — Energia cinética de rotação"
+categories: [UE5, OE5.6-B3]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 5.6 [B3] Conceituar e calcular a energia cinética de rotação de corpos rígidos
+            → naval: Energia armazenada em volantes e rotores de bordo
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 67-68 >}}
+
+Um rotor de girocompasso "parado" no seu suporte carrega energia suficiente para ser
+perigoso na desmontagem; o volante do MCP, girando, guarda a energia de um caminhão em
+rodovia. Corpos que giram têm energia cinética mesmo sem sair do lugar — e ela tem uma
+fórmula própria, gêmea da translacional.
+
+## Dedução {{< ra OE5.6 B3 >}}
+
+Cada partícula do corpo rígido tem $K_i = \tfrac{1}{2}m_i v_i^2$, e no giro
+$v_i = \omega\,r_i$ (tópico 5.2), com $\omega$ igual para todas:
+
+$$K_{\text{rot}} = \sum_i \tfrac{1}{2}m_i(\omega r_i)^2
+= \tfrac{1}{2}\Big(\underbrace{\sum_i m_i r_i^2}_{I}\Big)\,\omega^2$$
+
+$$\boxed{K_{\text{rot}} = \tfrac{1}{2}I\omega^2}$$
+
+A analogia com $\tfrac12 mv^2$ é literal: $m \to I$, $v \to \omega$. E como
+$K \propto \omega^2$, **dobrar a rotação quadruplica a energia** — a mesma lição do
+$v^2$ da translação, agora em rpm.
+
+Para um corpo que **rola ou translada girando** (ex.: hélice: gira e avança com o
+navio), as duas parcelas somam:
+
+$$K = \tfrac{1}{2}Mv_{\text{CM}}^2 + \tfrac{1}{2}I_{\text{CM}}\,\omega^2$$
+
+## A energia como ferramenta de análise
+
+A conservação de energia (3.5) e o balanço dissipativo (3.6) aceitam $K_{\text{rot}}$
+sem mudar uma vírgula — e isso responde perguntas práticas:
+
+- **Quanto trabalho custa levar o volante de 0 a 84 rpm?** Exatamente
+  $\tfrac12 I\omega^2$ (teorema trabalho–energia rotacional) — parte da conta do ar
+  de partida do MCP.
+- **Por que máquinas rotativas paradas "de repente" são um evento?** A energia
+  $\tfrac12 I\omega^2$ tem que ir para algum lugar — freio, calor, ou avaria.
+
+<!-- SIMULAÇÃO SUGERIDA: Plotly (tabela Q4): K_rot(ω) para o volante do 5.4 e para um
+     rotor de girocompasso (I pequeno, ω enorme) no mesmo gráfico log — mostra que o
+     ω² compensa quatro ordens de grandeza de I. Sliders de rpm. Paridade matplotlib
+     no {python}. -->
+
+::: {.sp}
+Compare a energia armazenada: (i) o volante do tópico 5.4
+($I = 8{,}55{\times}10^4$ kg·m²) a 84 rpm; (ii) um rotor de girocompasso de 2,2 kg
+concentrado em $r = 8$ cm ($I \approx 1{,}4{\times}10^{-2}$ kg·m²) a 12 000 rpm.
+
+**(a) Modelagem:** $K = \tfrac12 I\omega^2$;
+$\omega_{\text{vol}} = 8{,}80$ rad/s, $\omega_{\text{giro}} = 2\pi \times 200 = 1257$ rad/s.
+
+**(b) Desenvolvimento:**
+$$K_{\text{vol}} = \tfrac12 \times 8{,}55{\times}10^4 \times 8{,}80^2
+= 3{,}3{\times}10^6\,\text{J}
+\qquad
+K_{\text{giro}} = \tfrac12 \times 1{,}4{\times}10^{-2} \times 1257^2
+\approx 1{,}1{\times}10^4\,\text{J}$$
+
+**(c) Resultado:** volante: ~3,3 MJ (um caminhão de 30 t a 53 km/h); girocompasso:
+~11 kJ (uma moto a 60 km/h **numa peça de 2,2 kg**).
+
+**(d) Análise crítica:** o rotor tem $I$ seis milhões de vezes menor, mas o $\omega^2$
+devolve quatro ordens de grandeza — 11 kJ numa peça de mão é por que o manual manda
+esperar o rotor **parar completamente** (horas) antes de abrir o girocompasso. Já os
+3,3 MJ do volante explicam a inércia de manobra do MCP: reverter não é só parar o
+navio, é drenar e reconstruir essa energia de rotação.
+:::

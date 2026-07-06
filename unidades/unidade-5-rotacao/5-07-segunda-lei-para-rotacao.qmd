@@ -1,0 +1,90 @@
+---
+title: "5.7 — Segunda lei de Newton para a rotação"
+categories: [UE5, OE5.7-B3]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 5.7 [B3] Estabelecer e aplicar a segunda Lei de Newton ao movimento de rotação de
+            corpos rígidos
+            → naval: Torque do motor acelerando a linha de eixo; velocidade crítica
+              torcional
+═══════════════════════════════════════════════════════════════════════ -->
+
+{{< aula 69-70 >}}
+
+O torque do tópico 1.2 equilibrava corpos parados. Mas o que acontece quando os
+torques **não** se equilibram? O corpo gira cada vez mais depressa — e a taxa é ditada
+pela mesma estrutura da 2ª lei, com o momento de inércia no papel da massa. É a
+equação com que o MCP acelera a linha de eixo, e com que o eixo se vinga quando
+excitado na frequência errada.
+
+## A equação {{< ra OE5.7 B3 >}}
+
+Para uma partícula em círculo de raio $r$, a componente tangencial da 2ª lei é
+$F_t = m\,a_t = m\,\alpha\,r$ (5.2). O torque dessa força é
+$\tau = F_t\,r = m r^2 \alpha$. Somando sobre todas as partículas do corpo rígido
+(todas com o mesmo $\alpha$):
+
+$$\sum \tau = \Big(\sum_i m_i r_i^2\Big)\alpha
+\qquad\Longrightarrow\qquad
+\boxed{\sum \tau = I\,\alpha}$$
+
+O dicionário translação → rotação está completo:
+$F \to \tau$, $m \to I$, $a \to \alpha$ — e todos os métodos da UE2 migram juntos
+(diagrama de corpo livre vira diagrama de torques; polia com massa, guincho e cabrestante
+se resolvem assim).
+
+**Exemplo resolvido — acelerando a linha de eixo:** o motor entrega torque líquido
+$\tau$ (descontado o torque resistente do hélice) a um conjunto eixo+volante+hélice de
+momento de inércia $I$. De $0$ a $\omega$ em regime de torque constante:
+
+$$\alpha = \frac{\tau}{I}, \qquad t = \frac{\omega}{\alpha} = \frac{I\,\omega}{\tau}$$
+
+O tempo de resposta da máquina é **proporcional a $I$**: a mesma inércia que alisa a
+rotação (5.4) atrasa a manobra.
+
+## Potência e torque em rotação
+
+O trabalho de um torque é $W = \int \tau\,d\theta$, e a potência,
+
+$$P = \tau\,\omega$$
+
+— a irmã rotacional de $P = Fv$ (3.3). É a fórmula do dinamômetro de eixo: mede-se
+$\tau$ (torção do eixo) e $\omega$ (rpm), obtém-se a potência no eixo. A 84 rpm
+($\omega = 8{,}80$ rad/s), os 9,2 MW do tópico 3.3 correspondem a
+$\tau = P/\omega \approx 1{,}05$ MN·m de torque contínuo.
+
+E aqui a âncora do 7.04 §1.4.3.1: o torque do motor **não é contínuo** — vem em pulsos
+dos cilindros. O eixo é elástico à torção (1.5) e tem frequências naturais; quando a
+frequência dos pulsos coincide com uma delas, a **velocidade crítica torcional**, as
+oscilações de torção se amplificam a cada volta. Por isso a faixa crítica vem marcada
+no telégrafo e a regra é atravessá-la depressa, nunca operar dentro dela — a física
+completa (ressonância) é a UE1 de FIS-2, mas a equação que carrega o fenômeno é a
+deste tópico.
+
+<!-- SIMULAÇÃO SUGERIDA: Plotly (tabela Q4): ω(t) da linha de eixo sob torque líquido
+     constante para dois valores de I (com/sem volante), e curva P = τω sobreposta;
+     marcador da faixa de velocidade crítica a evitar. Parâmetros: τ até 1,2 MN·m,
+     I do tópico 5.4, rpm 0–100. Paridade matplotlib no {python}. -->
+
+::: {.sp}
+Na largada, o MCP entrega torque líquido médio de 600 kN·m ao conjunto
+eixo+volante+hélice, cujo momento de inércia total é $2{,}4{\times}10^5$ kg·m².
+Quanto tempo até as 84 rpm de serviço?
+
+**(a) Modelagem:** torque líquido constante → $\alpha = \tau/I$;
+$\omega_{\text{serv}} = 8{,}80$ rad/s.
+
+**(b) Desenvolvimento:**
+$$\alpha = \frac{600{\times}10^3}{2{,}4{\times}10^5} = 2{,}5\,\text{rad/s}^2
+\qquad
+t = \frac{\omega}{\alpha} = \frac{8{,}80}{2{,}5} = 3{,}5\,\text{s}$$
+
+**(c) Resultado:** ≈ 3,5 s de aceleração angular idealizada.
+
+**(d) Análise crítica:** o valor real é maior — o torque resistente do hélice cresce
+com $\omega^2$ e come o torque líquido conforme a rotação sobe (o modelo de τ
+constante vale no início). Se a faixa crítica torcional do eixo estiver, digamos, em
+55–65 rpm, estes segundos de travessia são projetados para serem **rápidos**:
+$\sum\tau = I\alpha$ é também a equação de fuga da ressonância.
+:::

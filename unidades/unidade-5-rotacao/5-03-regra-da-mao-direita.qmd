@@ -1,0 +1,50 @@
+---
+title: "5.3 — A convenção da regra da mão direita"
+categories: [UE5, OE5.3-B1]
+---
+
+<!-- ═══ OBJETIVOS DESTE TÓPICO — fonte: _docs/FIS_1_RA.md (não editar) ═══
+OE 5.3 [B1] Conceituar a "regra da mão direita"
+            → naval: Sentido de rotação de hélices de passo direito/esquerdo
+═══════════════════════════════════════════════════════════════════════ -->
+
+Um giro é "horário" visto de um lado e "anti-horário" visto do outro — descrição que
+depende do observador não serve para física nem para ordem de máquinas. A regra da mão
+direita é a convenção universal que elimina a ambiguidade, e ela já estava escondida
+nos vetores $\vec\omega$ (5.1) e $\vec\tau = \vec r \times \vec F$ (1.2).
+
+## A convenção {{< ra OE5.3 B1 >}}
+
+**Para rotações:** curve os dedos da mão direita no sentido do giro; o **polegar
+aponta o vetor** $\vec\omega$ (ou $\vec L$, ou $\vec\tau$). O vetor mora no eixo de
+rotação — único elemento geométrico que o giro inteiro compartilha.
+
+**Para produtos vetoriais** ($\vec C = \vec A \times \vec B$): aponte os dedos ao
+longo de $\vec A$, curve-os para $\vec B$ pelo menor ângulo; o polegar dá $\vec C$,
+perpendicular ao plano dos dois, com módulo $AB\sin\theta$. Consequência imediata:
+$\vec B \times \vec A = -\vec A \times \vec B$ — a ordem importa.
+
+É a mesma regra que orienta os eixos coordenados ($\hat\imath \times \hat\jmath =
+\hat k$): um sistema "destro", o padrão de toda a física e da matemática de bordo
+(inclusive o eletromagnetismo de FIS-3, onde a regra volta com força total).
+
+## A convenção naval que conversa com ela
+
+Hélices são classificados pelo sentido de giro **em marcha avante, vistos de ré**:
+
+- **Passo direito** (*right-handed*): gira horário visto de ré → $\vec\omega$ aponta
+  para **vante** (regra da mão direita aplicada);
+- **Passo esquerdo** (*left-handed*): anti-horário visto de ré → $\vec\omega$ para
+  **ré**.
+
+A utilidade não é cerimonial: o sentido de giro produz o **passo lateral** (a popa
+"caminha" para um bordo em marcha ré — efeito que todo prático usa na atracação), e
+em navios de dois eixos os hélices são contrarrotativos (um direito, um esquerdo)
+exatamente para que os efeitos laterais se cancelem. Dizer "passo direito" é dar, em
+duas palavras, o vetor $\vec\omega$ do 5.1 — e o sinal do momento angular que o
+girocompasso (5.8–5.10) vai explorar.
+
+<!-- SIMULAÇÃO SUGERIDA: p5.js (tabela Q4): mão direita esquemática 3D-isométrica ao
+     lado de um hélice; alternar passo direito/esquerdo e marcha avante/ré, com o
+     vetor ω atualizando; destaque do sentido do passo lateral da popa em ré.
+     Paridade matplotlib no {python}: os dois diagramas estáticos. -->
