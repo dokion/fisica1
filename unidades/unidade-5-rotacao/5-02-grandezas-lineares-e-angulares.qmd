@@ -8,7 +8,7 @@ OE 5.2 [B2] Relacionar grandezas lineares e angulares
             → naval: Velocidade periférica da pá × rpm do eixo; passo do hélice
 ═══════════════════════════════════════════════════════════════════════ -->
 
-{{< aula 61-62 >}}
+{{< aula 63-64 >}}
 
 O eixo gira a 84 rpm — mas a ponta da pá do hélice, a 3 m do centro, viaja a quantos
 m/s através da água? A pergunta importa (cavitação, tensões na pá, velocidade

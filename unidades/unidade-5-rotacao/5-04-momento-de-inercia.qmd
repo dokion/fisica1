@@ -9,7 +9,7 @@ OE 5.4 [B3] Conceituar e calcular o momento de Inércia de sistemas de partícul
             → naval: Inércia giroscópica do rotor do girocompasso; volante do MCP
 ═══════════════════════════════════════════════════════════════════════ -->
 
-{{< aula 63-64 >}}
+{{< aula 65-66 >}}
 
 Na translação, a resistência à mudança de movimento é a massa. Na rotação, massa não
 basta: importa **onde** ela está. Um volante de motor e um eixo nu podem pesar o

@@ -8,7 +8,7 @@ OE 5.6 [B3] Conceituar e calcular a energia cinética de rotação de corpos rí
             → naval: Energia armazenada em volantes e rotores de bordo
 ═══════════════════════════════════════════════════════════════════════ -->
 
-{{< aula 67-68 >}}
+{{< aula 69-70 >}}
 
 Um rotor de girocompasso "parado" no seu suporte carrega energia suficiente para ser
 perigoso na desmontagem; o volante do MCP, girando, guarda a energia de um caminhão em

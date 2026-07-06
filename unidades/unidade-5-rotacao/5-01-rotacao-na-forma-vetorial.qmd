@@ -8,7 +8,7 @@ OE 5.1 [B2] Descrever a rotação de um corpo rígido com grandezas vetoriais
             → naval: Rotação da linha de eixo e do hélice: vetor velocidade angular
 ═══════════════════════════════════════════════════════════════════════ -->
 
-{{< aula 59-60 >}}
+{{< aula 61-62 >}}
 
 A linha de eixo de um navio gira a 84 rpm — mas 84 rpm **em torno de quê, e para que
 lado?** Para operar máquinas rotativas (e para entender o girocompasso adiante), a

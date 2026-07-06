@@ -8,7 +8,7 @@ OE 5.8 [B1] Estabelecer o momento angular
             → naval: Rigidez no espaço do eixo do giroscópio livre
 ═══════════════════════════════════════════════════════════════════════ -->
 
-{{< aula 71-72 >}}
+{{< aula 73-74 >}}
 
 Falta uma peça no dicionário translação↔rotação: o análogo do momento linear
 $\vec p = m\vec v$. Essa peça — o momento angular — é a mais importante das três

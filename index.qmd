@@ -1,0 +1,178 @@
+---
+title: "FÍSICA-1 (FIS-1) — Syllabus {SEMESTRE/ANO}"
+---
+
+**Professor:** {INSTRUTOR} · **Carga horária:** 80 h-aula (60 h) · **Pré-requisitos:** Não se aplica
+**Turmas:** FONT + FOMQ · **Contato/atendimento:** {HORÁRIO E LOCAL FIXOS SEMANAIS}
+**Âncora internacional:** IMO Model Courses 7.03 (apêndice 2) e 7.04 (apêndice 1)
+
+* * *
+
+## 1. Descrição
+
+A disciplina aborda os fenômenos físicos da mecânica — equilíbrio da partícula e do corpo rígido, cinemática e dinâmica, trabalho e energia, sistemas de partículas e dinâmica da rotação — no contexto profissional do Oficial de Náutica e Máquinas da Marinha Mercante. Os conteúdos são ancorados nos Model Courses IMO 7.03 e 7.04, conectando a física de base às competências operacionais exigidas pela Convenção STCW-78. Ao longo do curso, o aluno aprende a reconhecer e analisar a física presente nas fainas de bordo (amarração, peação, içamento com guindastes e paus de carga), na manobra do navio (curvas de giro, distâncias de parada, plotagem radar), na estabilidade (centro de gravidade, momentos) e nas máquinas rotativas (linha de eixo, volante, girocompasso). A disciplina também estabelece os conceitos fundamentais — energia potencial, conservação de energia e de momento — que sustentam FIS-2, FIS-3 e as disciplinas profissionais de máquinas e eletricidade.
+
+* * *
+
+## 2. Cronograma
+
+> Régua: par de aulas (Apêndice II). CHD = 80 h-aula = 40 pares. 4 h-aula de avaliação = 2 pares.
+
+| Aulas | UE | Tópicos | OE (objetivos específicos) | Verificação |
+|---|---|---|---|---|
+| 1-2 | 1 | Força como vetor; peso, tração, compressão, normal, atrito | 1.1 | — |
+| 3-4 | 1 | Equilíbrio da partícula; diagrama de corpo livre; lingadas | 1.2 | — |
+| 5-6 | 1 | Torque; braço de alavanca; binário; momento de banda | 1.3 | — |
+| 7-8 | 1 | Forças distribuídas; carga equivalente; pressão em anteparo | 1.4 | C1 Quiz Dokion |
+| 9-10 | 1 | Estática do corpo rígido; as duas condições de equilíbrio | 1.5 | — |
+| 11-12 | 1 | Lança com tirante; sistemas de içamento (+ prática: estática) | 1.5 | — |
+| 13-14 | 1 | Elasticidade; tensão, deformação, Lei de Hooke | 1.6 | — |
+| 15-16 | 2 | Derivada e a velocidade instantânea | 2.1 | — |
+| 17-18 | 2 | Integral e a distância como área; curva de parada | 2.1 | — |
+| 19-20 | 2 | Cinemática vetorial em 2D/3D | 2.2 | — |
+| 21-22 | 2 | Movimento relativo; plotagem radar; CPA/TCPA | 2.2 | C2 Estudo de caso (plotagem radar) |
+| 23-24 | 2 | Leis de Newton; diagramas de corpo livre | 2.3 | — |
+| 25-26 | 2 | Sistemas com atrito; plano inclinado; ângulo crítico | 2.3 | — |
+| 27-28 | 2 | Inércia do navio; distâncias de parada (+ prática: dinâmica) | 2.3 | — |
+| 29-30 | 2 | Componentes tangencial e centrípeta; curva de giro | 2.4 | — |
+| 31-32 | 2 | Curva de giro: advance, transfer, diâmetro tático | 2.4 | — |
+| 33-34 | 3 | Trabalho de força constante e variável; diagrama p–V | 3.1 | — |
+| 35-36 | 3 | Teorema trabalho–energia cinética; energia da parada | 3.2 | — |
+| 37-38 | 3 | Potência; potência indicada do diesel | 3.3 | C3 Quiz Dokion |
+| 39-40 | 3 | Forças conservativas; energia potencial | 3.4 | — |
+| 41-42 | 3 | Conservação da energia; cadeia energética de bordo | 3.5 | — |
+| 43-44 | 3 | Sistemas dissipativos; perdas em mancais | 3.6 | — |
+| 45-46 | — | **PROVA 1 — Ciclo 1 (UE 1 a 3)** | — | P1 |
+| 47-48 | 4 | Centro de massa: definição e cálculo | 4.1 | — |
+| 49-50 | 4 | A fórmula GG₁ = m·d/Δ; carga suspensa | 4.1 | — |
+| 51-52 | 4 | Teorema do centro de massa; forças internas × externas | 4.2 | — |
+| 53-54 | 4 | Navio como sistema; rebocadores e manobra | 4.2 | — |
+| 55-56 | 4 | Momento linear; impulso; conservação | 4.3 | — |
+| 57-58 | 4 | Propulsão como recuo contínuo; colisões | 4.3 | C4 Projeto computacional (início) |
+| 59-60 | 4 | Prática: sistemas de partículas; consolidação | 4.1–4.3 | — |
+| 61-62 | 5 | Rotação na forma vetorial; ω e α | 5.1 | — |
+| 63-64 | 5 | Grandezas lineares × angulares; passo do hélice | 5.2 + 5.3 | — |
+| 65-66 | 5 | Momento de inércia; volante do MCP | 5.4 | — |
+| 67-68 | 5 | Teorema dos eixos paralelos | 5.5 | — |
+| 69-70 | 5 | Energia cinética de rotação | 5.6 | — |
+| 71-72 | 5 | 2ª lei para rotação; τ = Iα; P = τω; velocidade crítica | 5.7 | — |
+| 73-74 | 5 | Momento angular; rigidez no espaço | 5.8 | — |
+| 75-76 | 5 | Precessão: τ = dL/dt; girocompasso | 5.9 | C4 Demo ao vivo |
+| 77-78 | 5 | Conservação do momento angular (+ prática: rotação) | 5.10 | — |
+| 79-80 | — | **PROVA 2 — Ciclo 2 (UE 4 e 5)** | — | P2 |
+
+* * *
+
+## 3. Política de Avaliação
+
+- **Composição da nota:** 2 ciclos · Prova 80% + Trabalho 20% por ciclo (Apêndice I).
+- **Divisão dos ciclos (sumário oficial):** 1ª prova — UE 1 a 3 · 2ª prova — UE 4 e 5.
+- **Critério de aprovação:** {REGRA INSTITUCIONAL — ex.: média ≥ 5,0 em cada ciclo}.
+- **2ª chamada:** {REGRA INSTITUCIONAL}.
+- **Relatórios de aula prática:** a critério do Docente, valendo até 30% da nota da prova do ciclo correspondente (sumário oficial, item 3c).
+- **Provas individualizadas** via Dokion (instâncias únicas por aluno).
+- **Trabalhos:** defesa oral obrigatória — IA não defende oralmente.
+- **Uso de IA:** permitido como ferramenta de estudo; vedado em avaliações síncronas.
+- **Integridade acadêmica:** {REGRA INSTITUCIONAL}.
+
+## 4. Objetivos específicos por Unidade de Ensino
+
+> Fonte: Parte C do sumário oficial FIS-1 (fev/2026), navalizados via Model Courses 7.03/7.04 (`_docs/FIS_1_RA.md`).
+> Formato: [OE] [Bloom] Texto do objetivo · Aplicação naval.
+> STCW indicada é exemplo de aplicação profissional — FIS-1 não tem vínculo normativo STCW direto.
+
+### UE 1 — Equilíbrio da Partícula e do Corpo Rígido (12 h-aula + 2 h prática)
+*Âncora: 7.04 §3.1.3.3.1 (materiais sob carga) · §4.2.1.4/.8/.9 (estática do navio) · 7.03 §3.2.2.2 · STCW A-III/1, A-II/1*
+
+| Obj. | Bloom | Objetivo específico | Aplicação naval |
+|---|---|---|---|
+| 1.1 | B2 | Estabelecer o conceito de força como grandeza vetorial e descrever as principais forças da UE | Tração/compressão/cisalhamento em cabos e estruturas de bordo |
+| 1.2 | B3 | Estabelecer a condição de equilíbrio de uma partícula e aplicá-la | Carga suspensa por estropos; ângulo de lingada |
+| 1.3 | B2 | Definir o torque e seu significado físico no equilíbrio do corpo rígido | Momento de banda e sua correção; binário peso–empuxo |
+| 1.4 | B3 | Definir força distribuída e calcular força equivalente e ponto de aplicação | Pressão hidrostática no costado; distribuição peso–empuxo |
+| 1.5 | B3 | Aplicar as condições de equilíbrio à estática de corpos rígidos | Içamento com guindaste/pau de carga |
+| 1.6 | B1 | Conceituar elasticidade e as forças de compressão, tração e cisalhamento | Lei de Hooke; hogging/sagging no convés e fundo |
+
+### UE 2 — Cinemática e Dinâmica da Partícula (16 h-aula + 2 h prática)
+*Âncora: 7.03 §1.9.1 (manobra) · §1.3 (radar/ARPA) · STCW A-II/1*
+
+| Obj. | Bloom | Objetivo específico | Aplicação naval |
+|---|---|---|---|
+| 2.1 | B1 | Definir derivada e integral motivadas pela cinemática 1D | Curva v(t) da parada; head reach como área |
+| 2.2 | B1 | Definir a cinemática em 2D/3D e o movimento relativo | Plotagem radar: relativo × verdadeiro; CPA/TCPA |
+| 2.3 | B3 | Conceituar as leis de Newton e aplicá-las com e sem atrito | Inércia do navio: parada carregado ≈ 3× lastro |
+| 2.4 | B2 | Descrever as componentes tangencial e centrípeta no movimento curvilíneo | Curva de giro: advance, transfer, diâmetro tático |
+
+### UE 3 — Trabalho e Energia (12 h-aula)
+*Âncora: 7.04 §1.4.1.1 (motor diesel) · 7.03 §1.9.1 · STCW A-III/1, A-II/1*
+
+| Obj. | Bloom | Objetivo específico | Aplicação naval |
+|---|---|---|---|
+| 3.1 | B3 | Definir e aplicar o conceito de trabalho de uma força | Trabalho do gás sobre o pistão (diagrama p–V) |
+| 3.2 | B3 | Definir e aplicar o Teorema Trabalho–Energia Cinética | Energia dissipada na parada do navio |
+| 3.3 | B3 | Estabelecer e aplicar o conceito de potência | Potência indicada: dimensões, rpm e m.e.p. |
+| 3.4 | B3 | Estabelecer forças conservativas e energia potencial | Içamento de carga como energia armazenada |
+| 3.5 | B3 | Conceituar e aplicar a conservação da energia | Cadeia energética: combustível → propulsão |
+| 3.6 | B4 | Analisar a variação de energia mecânica em sistemas dissipativos | Perdas por atrito em mancais; aquecimento como sintoma |
+
+### UE 4 — Sistemas de Partículas e Corpos Rígidos (12 h-aula + 2 h prática)
+*Âncora: 7.04 §4.2.1.8 (movimento do G) · 7.03 §3.2.2.6 (propulsão) · STCW A-II/1, A-III/1*
+
+| Obj. | Bloom | Objetivo específico | Aplicação naval |
+|---|---|---|---|
+| 4.1 | B3 | Conceituar centro de massa e calculá-lo | GG₁ = m·d/Δ: deslocamento do G ao mover cargas |
+| 4.2 | B3 | Aplicar a 2ª lei ao movimento do centro de massa | Resposta do G à resultante: rebocadores, manobra |
+| 4.3 | B3 | Definir momento linear e aplicar sua conservação | Propulsão a hélice (empuxo); recuo; colisões |
+
+### UE 5 — Dinâmica da Rotação (16 h-aula + 2 h prática)
+*Âncora: 7.03 §1.1.5.3 (girocompasso) · 7.04 §1.4.1.5 (linha de eixo) · §1.4.3.1 · STCW A-II/1, A-III/1*
+
+| Obj. | Bloom | Objetivo específico | Aplicação naval |
+|---|---|---|---|
+| 5.1 | B2 | Descrever a rotação com grandezas vetoriais | Vetor ω da linha de eixo e do hélice |
+| 5.2 | B2 | Relacionar grandezas lineares e angulares | Velocidade periférica da pá; passo do hélice |
+| 5.3 | B1 | Conceituar a regra da mão direita | Hélices de passo direito/esquerdo |
+| 5.4 | B3 | Conceituar e calcular o momento de inércia | Rotor do girocompasso; volante do MCP |
+| 5.5 | B3 | Estabelecer e aplicar o Teorema dos Eixos Paralelos | — |
+| 5.6 | B3 | Conceituar e calcular a energia cinética de rotação | Energia armazenada em volantes e rotores |
+| 5.7 | B3 | Aplicar a 2ª lei ao movimento de rotação | Torque acelerando o eixo; velocidade crítica torcional |
+| 5.8 | B1 | Estabelecer o momento angular | Rigidez no espaço do giroscópio livre |
+| 5.9 | B2 | Descrever o torque como taxa de variação do momento angular | Precessão proporcional ao torque |
+| 5.10 | B3 | Conceituar e aplicar a conservação do momento angular | Girocompasso; guindaste giratório |
+
+* * *
+
+## 5. Mapa de Avaliação
+
+> Estrutura: 2 ciclos avaliativos (Apêndice I). Prova = 80% · Trabalho = 20% por ciclo.
+
+| Cód | Instrumento | Par de aulas | Peso no ciclo | UEs medidas | Mecanismo anti-IA |
+|---|---|---|---|---|---|
+| P1 | Prova escrita — Ciclo 1 | 45-46 | 80% | UE 1 a 3 | Síncrono, individualizado |
+| P2 | Prova escrita — Ciclo 2 | 79-80 | 80% | UE 4 e 5 | Síncrono, individualizado |
+| C1 | Quiz Dokion | 7-8 | 25% do trabalho C1 | UE 1 | Síncrono em sala, timer |
+| C2 | Estudo de caso + defesa oral (plotagem radar) | 21-22 | 50% do trabalho C1 | UE 2 | Defesa oral 5 min |
+| L1 | Listas (compleção) UE 1–3 | contínuo | 25% do trabalho C1 | UE 1 a 3 | Amostragem em sala |
+| C3 | Quiz Dokion | 37-38 | 25% do trabalho C2 | UE 3* | Síncrono em sala, timer |
+| C4 | Projeto computacional + demo | 57-58 → 75-76 | 50% do trabalho C2 | UE 4 + 5 | Demo ao vivo com alteração de parâmetro |
+| L2 | Listas (compleção) UE 4–5 | contínuo | 25% do trabalho C2 | UE 4 + 5 | Amostragem em sala |
+
+*\*C3 ocorre no fim do ciclo 1, mas compõe o trabalho do ciclo 2 — ajustar a critério do Docente ({VERIFICAR com o calendário institucional}).*
+
+* * *
+
+## 6. Materiais
+
+- Notas de aula próprias (publicadas após cada par de aulas)
+- Referências bibliográficas do sumário oficial FIS-1:
+  - Halliday, D.; Resnick, R.; Walker, J. — *Fundamentos de Física vol. 1: Mecânica* (10ª ed., LTC, 2016)
+  - Hibbeler, R. C. — *Estática: Mecânica para Engenharia* (12ª ed., Pearson, 2010)
+  - Nussenzveig, H. M. — *Curso de Física Básica vol. 1: Mecânica* (5ª ed., Blücher, 2019)
+- Listas de exercícios (1 por bloco de tópicos)
+- Simulações: {PhET e outros — versões offline baixadas previamente}
+
+* * *
+
+## 7. Metodologia
+
+Aula expositiva-dialogada em quadro; slides apenas ilustrativos; resolução de situações-problema do contexto marítimo (padrões SP da Seção 6 do Documento Mestre); componente computacional (Python/planilha) no projeto da continuada. Aulas práticas em laboratório didático com recursos instrucionais, grupos de no máximo 6 alunos, com uso de EPI determinado pelo sistema de segurança e supervisão do Docente (sumário oficial, itens 2.1c, 2.5 e 2.6).

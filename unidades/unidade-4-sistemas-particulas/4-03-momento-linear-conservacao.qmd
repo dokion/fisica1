@@ -10,7 +10,7 @@ OE 4.3 [B3] Definir o momento linear e aplicar sua conservação à sistemas de
               imprimida à água (empuxo); recuo
 ═══════════════════════════════════════════════════════════════════════ -->
 
-{{< aula 53-54 >}}
+{{< aula 55-56 >}}
 
 Como um navio de 50 000 t se empurra através da água? Não há nada rígido para apoiar —
 o hélice "se apoia" na própria água, arremessando-a para ré. A grandeza que torna essa

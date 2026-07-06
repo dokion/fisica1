@@ -8,7 +8,7 @@ OE 5.9 [B2] Descrever o torque como taxa de variação do momento angular
             → naval: Precessão do giroscópio: taxa proporcional ao torque aplicado
 ═══════════════════════════════════════════════════════════════════════ -->
 
-{{< aula 73-74 >}}
+{{< aula 75-76 >}}
 
 Empurre o eixo de um giroscópio em rotação e ele foge — **para o lado**, não para onde
 você empurrou. O comportamento parece desafiar a intuição, mas é a consequência direta

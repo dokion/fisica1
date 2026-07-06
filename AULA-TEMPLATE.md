@@ -131,8 +131,8 @@ OE n.m [Bk] {texto do objetivo}
 ````
 
 **Exemplares para imitar** (tom, densidade e estrutura):
-`unidades/unidade-1-oscilacoes/1-01-oscilacoes-harmonicas.qmd` e
-`unidades/unidade-1-oscilacoes/1-02-mhs-e-mcu.qmd`.
+`unidades/unidade-1-equilibrio/1-01-forca-e-estatica-da-particula.qmd` e
+`unidades/unidade-1-equilibrio/1-04-estatica-do-corpo-rigido.qmd`.
 
 ---
 

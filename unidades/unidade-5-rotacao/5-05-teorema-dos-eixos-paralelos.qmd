@@ -8,7 +8,7 @@ OE 5.5 [B3] Estabelecer e aplicar o Teorema dos Eixos Paralelos
             → naval: —
 ═══════════════════════════════════════════════════════════════════════ -->
 
-{{< aula 65-66 >}}
+{{< aula 67-68 >}}
 
 A tabela do tópico 5.4 dá o momento de inércia pelo **centro de massa** — mas corpos
 reais raramente giram por ali: a porta do paiol gira pela dobradiça, a lança pelo pé, o

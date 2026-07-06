@@ -10,7 +10,7 @@ OE 4.1 [B3] Conceituar a grandeza centro de massa e calculá-la em situações
               ou mover massas a bordo
 ═══════════════════════════════════════════════════════════════════════ -->
 
-{{< aula 45-46 >}}
+{{< aula 47-48 >}}
 
 Um navio tem milhões de quilogramas distribuídos entre casco, máquinas, carga, lastro e
 combustível — e no entanto toda a estabilidade se calcula acompanhando **um único
@@ -39,7 +39,7 @@ como referência.
 
 ## A fórmula operacional: GG₁
 
-{{< aula 47-48 >}}
+{{< aula 49-50 >}}
 
 O que acontece com G quando se **move** uma massa $m$ já a bordo por uma distância $d$?
 Da definição, com o deslocamento $\Delta\vec r_m = \vec d$ da massa movida:

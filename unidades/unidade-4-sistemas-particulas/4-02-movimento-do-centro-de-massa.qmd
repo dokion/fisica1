@@ -10,7 +10,7 @@ OE 4.2 [B3] Aplicar a segunda lei de Newton ao movimento do centro de massa de
               aceleração, parada)
 ═══════════════════════════════════════════════════════════════════════ -->
 
-{{< aula 49-50 >}}
+{{< aula 51-52 >}}
 
 Com que direito tratamos um navio — milhares de peças, tanques com líquido, tripulação
 andando — como "uma partícula" nos tópicos de cinemática? O teorema deste tópico é o

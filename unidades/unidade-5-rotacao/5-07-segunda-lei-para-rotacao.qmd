@@ -10,7 +10,7 @@ OE 5.7 [B3] Estabelecer e aplicar a segunda Lei de Newton ao movimento de rotaç
               torcional
 ═══════════════════════════════════════════════════════════════════════ -->
 
-{{< aula 69-70 >}}
+{{< aula 71-72 >}}
 
 O torque do tópico 1.2 equilibrava corpos parados. Mas o que acontece quando os
 torques **não** se equilibram? O corpo gira cada vez mais depressa — e a taxa é ditada

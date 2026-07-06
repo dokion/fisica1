@@ -10,7 +10,7 @@ OE 5.10 [B3] Conceituar e aplicar a conservação do momento angular a problemas
                na ausência de torques
 ═══════════════════════════════════════════════════════════════════════ -->
 
-{{< aula 75-76 >}}
+{{< aula 77-78 >}}
 
 A última lei de conservação do curso fecha o ciclo: momento linear se conserva sem
 força externa (4.3); energia se conserva sempre, mudando de forma (3.5); e o momento
